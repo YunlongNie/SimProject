@@ -1,0 +1,16 @@
+{
+    "contents" : "la = 0\n\nload(\"subLa0.Rdata\") # \n#source(\"DataForPlot.R\")\n\nsource(\"plot.R\")\n\nsource(\"savePlot.R\")\n\nla = 2\n\nload(\"subLa2.Rdata\") # \n#source(\"DataForPlot.R\")\n\nsource(\"plot.R\")\n\nsource(\"savePlot.R\")\n",
+    "created" : 1374184747619.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3347047646",
+    "id" : "DC289432",
+    "lastKnownWriteTime" : 1374185986,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/sim4/GetPlotLa0AndLa2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

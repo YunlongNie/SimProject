@@ -1,0 +1,15 @@
+{
+    "contents" : "\n\nload(\"ParaSet.Rdata\")\nlibrary(boot)\nsubset = subset(Paraset,obs==100)\nfor(j in 1:2)\n{\nx=as.numeric(subset[j,])\nnobs=x[1]\ng0=x[4]\ng1=x[3]\ng2=x[2]\nN=3\nprint(N)\nsource(\"mainpart.R\")\n}\n",
+    "created" : 1373269587928.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3571176520",
+    "id" : "D0CD291D",
+    "lastKnownWriteTime" : 1373270288,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SimulationBayDRwithDR/tempNew.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

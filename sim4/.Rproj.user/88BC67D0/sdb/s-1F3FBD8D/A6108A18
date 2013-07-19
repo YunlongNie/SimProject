@@ -1,0 +1,15 @@
+{
+    "contents" : "rho = 0.7\nrequire(boot)\ng0 = logit(0.2)\ng1=1\ng2=1\nla1=2\nla2=2\nmE=0.001\nrobs=6\nK = c(2,4,8)\nn =c(1000,3000)\nN=100\nrequire(BayDR)\nDelta=as.data.frame(do.call(rbind,lapply(K,function(k)\n  c(k=k,Est=CausalEst(K=k,r=robs,rho=rho,gamma0=g0,gamma1=g1,gamma2=g2,lambda1=la1,lambda2=la2,mc.error=mE))\n)\n))\nfor(nobs in n)\n{\n  source(\"mainPart.R\")\n}\n",
+    "created" : 1373794956451.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3677194571",
+    "id" : "A6108A18",
+    "lastKnownWriteTime" : 1374000003,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/sim4/temp.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

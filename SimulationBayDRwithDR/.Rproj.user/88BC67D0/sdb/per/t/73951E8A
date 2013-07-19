@@ -1,0 +1,16 @@
+{
+    "contents" : "print.figure <- function(writeto,filename,placement=\"H\",caption,label)\n{\n  sink(writeto)\n  cat(\"\\\\begin{figure}[\",placement,\"]\\n\",sep=\"\")\n  cat(\"\\\\begin{center}\\n\",sep=\"\")\n  cat(\"\\\\includegraphics{\",filename,\"}\\n\",sep=\"\")\n  cat(\"\\\\end{center}\\n\",sep=\"\")\n  if(!missing(caption)) {cat(\"\\\\caption{\", caption,\"}\\n\",sep=\"\")}\n  if(!missing(label)) {cat(\"\\\\label{\", label,\"}\\n\",sep=\"\")}\n  cat(\"\\\\end{figure}\\n\",sep=\"\")\n  sink()\n  system(paste(\"cat\",writeto))\n}",
+    "created" : 1373399862471.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3015873562",
+    "id" : "73951E8A",
+    "lastKnownWriteTime" : 1373399882,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/printFigure.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

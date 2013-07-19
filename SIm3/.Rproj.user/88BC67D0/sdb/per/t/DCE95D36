@@ -1,0 +1,16 @@
+{
+    "contents" : "#source(\"GetPlot.R\")\nrequire(ggplot2)\nload(\"resMerge.Rdata\")\nestimator=c(\"S0\",\"P0\",\"B0\",\"S1\",\"P1\",\"B1\",\"S2\",\"B2\")\nsubest= subset(resMerge,variable%in%estimator)\nggplot.temp=ggplot(data=subest) +\n  facet_wrap(~r,scales = \"free_y\")+theme(legend.position = \"none\") +\n  xlab(\"lambda\")+ylab(\"RMSE\")\nplotsave=ggplot.temp +\n  geom_text(aes(y=value,x=g2,label=variable,\n                color=factor(variable)),alpha=1,size=3,angle=15,\n            position = position_dodge(width=0.2))\n #geom_linerange(aes(ymax=value-sd,ymin=value+sd,x=g2,color=factor(variable)),position=position_dodge(width=0.2),angle=90)\n\nfigName= \"SimulationBayDR3\"\nggsave(plot=plotsave,filename=paste0(\"~/Dropbox/UBC/Thesis/\",figName,\".pdf\"),width=10,height=6)  \ncapName=\"Root-mean-squared error of estimates $\\\\widehat \\\\Delta_{S0},\\\\widehat \\\\Delta_{P0},\\\\widehat \\\\Delta_{B0},\\\\widehat \\\\Delta_{S1},\\\\widehat \\\\Delta_{P1},\\\\widehat \\\\Delta_{B1},\\\\widehat \\\\Delta_{S2},\n\\\\widehat \\\\Delta_{P2},\\\\widehat \\\\Delta_{B2}$. Note that the true value of $\\\\Delta$ is around 0.15. \nEach panel is simulated under different number of confounders ranging from 4 to 12. \"\nsource(\"~/Dropbox/UBC/Thesis/Simulation_Thesis/printFigure.R\")\nprint.figure(writeto=\"~/Dropbox/UBC/Thesis/SimulationBayDRPlot3.tex\",filename=figName,placement=\"h\",\n             caption=capName,label=\"SimDR3\")\n#dev.off()",
+    "created" : 1373755648746.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1872303879",
+    "id" : "DCE95D36",
+    "lastKnownWriteTime" : 1373759800,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SIm3/GetPlotForall.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

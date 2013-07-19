@@ -1,0 +1,16 @@
+{
+    "contents" : "\nnames = list.files(paste0(\"data/la\",la))\n#files=names[grep(\"999\",names)]\nfiles=names\nestT=do.call(rbind,lapply(files,function(file)\n  \n{\n  \n  load(paste0(\"data/la\",la,\"/\",file))\n  data.frame(est,n=as.numeric(substr(file,6,9)))\n})\n)\n\nDelta$r =Delta$k*6\nrequire(plyr)\n\nestT=join(estT,Delta,by=\"r\")\n\nest.col = 1:8  # see head estT2 to make sure selected col number \n# dr      sold      pold      bold       snew      pnew       bnew\nres=as.data.frame(do.call(rbind,dlply(estT,.(k,n),function(x)\n{\n  \n  do.call(c,c(sqrt(colMeans((x[,est.col] - x[\"Est\"][1,])^2))/x[\"Est\"][1,],unique(x[\"k\"]),unique(x[\"n\"])))\n}\n)\n))\nnames(res)[1:(length(est.col))] = c(\"D\",\"S0\",\"P\",\"B0\",\"S1\",\"B1\",\"S2\",\"B2\")\n\nrequire(reshape2) \nres.melt=melt(res,id=c(\"k\",\"n\"))\nsubest = res.melt\nsubest$k = paste0(\"k=\",subest$k)\nsubest$n = paste0(\"n=\",subest$n)\n\nsave(subest,file=paste0(\"subLa\",la,\".Rdata\"))",
+    "created" : 1374184668612.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3293107762",
+    "id" : "5990778F",
+    "lastKnownWriteTime" : 1374185876,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/sim4/DataForPlot.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

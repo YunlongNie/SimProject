@@ -1,0 +1,15 @@
+{
+    "contents" : "pb =  txtProgressBar(min = 0, max = N, style = 3)\nres=do.call(rbind,lapply(1:N, function(x)\n{\n  dat = DatGen(n=n,r=r,pho=pho,\n               alpha2 = alpha2,alpha1=alpha1, alpha3=alpha3,\n               gamma0 = gamma0, gamma1 = gamma1, gamma2 = gamma2, lambda1 = lambda1,lambda2=lambda2)\n  reg=est.reg(dat=dat)\n  prp= est.prp(datY=dat)\n  dr = est.dr(dat=dat)\n  sd = sd.bs(dat=dat,B=1000)\n  temp=c(reg=reg$est,sd.reg = reg$sd, prp=prp,dr=dr$est.dr,sd.dr.asp= dr$sd.dr,sd.dr.bs = sd$dr, prp.sd.bs = sd$prp,\n    reg.sd.bs = sd$reg)\n print(temp)\n  print(x) \n  setTxtProgressBar(pb, x)\n  return(temp)\n}\n)\n)\nclose(pb)\ncausal = causal.est(r=r,pho=pho,\n                             gamma0 = gamma0, gamma1 = gamma1, gamma2 = gamma2, lambda1 = lambda1,lambda2=lambda2)\n\nres=as.data.frame(res)\nZ = qnorm(0.975)\ncon.reg.asp = data.frame(lower=res$reg-Z*res$sd.reg,upper=res$reg+Z*res$sd.reg)\ncon.reg.bs = data.frame(lower=res$reg-Z*res$reg.sd.bs,upper=res$reg+Z*res$reg.sd.bs)\n# cov.reg.asp = coverage.rate(con.reg.asp,causal)\n# cov.reg.bs = coverage.rate(con.reg.bs,causal)\n\n\ncon.prp.bs = data.frame(lower=res$prp-Z*res$prp.sd.bs,upper=res$prp+Z*res$prp.sd.bs)\n#cov.prp.bs = coverage.rate(con.prp.bs,causal)\n\ncon.dr.asp =data.frame(lower=res$dr-Z*res$sd.dr.asp,upper=res$dr+Z*res$sd.dr.asp)\ncon.dr.bs = data.frame(lower=res$dr-Z*res$sd.dr.bs,upper=res$dr+Z*res$sd.dr.bs)\n# cov.dr.asp = coverage.rate(con.dr.asp,causal)\n# cov.dr.bs = coverage.rate(con.dr.bs,causal)\n\n\ncov.rate = c(cov.reg.asp = coverage.rate(con.reg.asp,causal),\n             cov.reg.bs = coverage.rate(con.reg.bs,causal),\n             cov.dr.asp = coverage.rate(con.dr.asp,causal),\n             cov.dr.bs = coverage.rate(con.dr.bs,causal),\n             cov.prp.bs = coverage.rate(con.prp.bs,causal)\n)\n\nmse = colMeans(res[,c(\"dr\",\"prp\",\"reg\")] -causal)^2\n",
+    "created" : 1371624426522.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3128543058",
+    "id" : "F71FFDE7",
+    "lastKnownWriteTime" : 1371483826,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/Thesis_SimulationDR/Simulation2/MainPartprp.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "library(reshape2)\ncov.t = list()\nres.t  = list()\nmse.t = list()\n\nfor (i in 1:length(input.file)){\n  load(paste0(\"Simulation2/\",input.file[i]))\n  cov.t[[i]]=cov.rate\n  res.t[[i]]=res\n  mse.t[[i]] = sqrt(mse)\n}\n# load(\"Simulation2/outW100_500.Rdata\")\n# cov.t[[1]]=cov.rate\n# res.t[[1]]=res\n# mse.t[[1]] = sqrt(mse)\n# \n# load(\"Simulation2/outW200_500.Rdata\")\n# cov.t[[2]]=cov.rate\n# res.t[[2]]=res\n# mse.t[[2]] = sqrt(mse)\n# \n# load(\"Simulation2/outW500_500.Rdata\")\n# cov.t[[3]]=cov.rate\n# res.t[[3]]=res\n# mse.t[[3]] = sqrt(mse)\n\n#######\nmean.res = data.frame(n=obs.n,do.call(rbind,lapply(res.t,function(x) {apply(x[,c(\"reg\",\"prp\",\"dr\")],2,mean)})))\nmean.res\n\nmedian.res = data.frame(n=obs.n,do.call(rbind,lapply(res.t,function(x) {apply(x[,c(\"reg\",\"prp\",\"dr\")],2,median)})))\nmedian.res\n\nmse.res = data.frame(n=obs.n,do.call(rbind,mse.t))\n\nmelt.temp=melt(mean.res,id.vars=1)\nhead(melt.temp)\nmelt.temp=melt.temp[with(melt.temp,order(n)),]\nnames(melt.temp) = c(\"obs\",\"estimate\",\"mean\")\nmelt.mean=melt.temp\n\nmelt.temp=melt(median.res,id.vars=1)\nhead(melt.temp)\nmelt.temp=melt.temp[with(melt.temp,order(n)),]\nnames(melt.temp) = c(\"obs\",\"estimate\",\"median\")\nmelt.median=melt.temp\n\nmelt.temp=melt(round(mse.res,4),id.vars=1)\nhead(melt.temp)\nmelt.temp=melt.temp[with(melt.temp,order(n)),]\nnames(melt.temp) = c(\"obs\",\"estimate\",\"mse\")\nmelt.mse=melt.temp\n\n\nlibrary(plyr)\nres.table=join(join(melt.mean,melt.median,by=c(\"obs\",\"estimate\")),melt.mse,by=c(\"obs\",\"estimate\"))\n\n# output\nlibrary(xtable)\n\nprint.xtable(xtable(format(res.table[,c(2,1,3:5)],digits=4),caption=\"res\"),include.rownames=FALSE)\n",
+    "created" : 1371626670249.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1966158272",
+    "id" : "E4991916",
+    "lastKnownWriteTime" : 1371677435,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/Thesis_SimulationDR/Simulation2/latexTableRes.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

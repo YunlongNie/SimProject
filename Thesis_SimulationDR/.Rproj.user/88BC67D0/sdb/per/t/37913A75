@@ -1,0 +1,16 @@
+{
+    "contents" : "causal.est=function(r=4,pho=0.7,\n                    gamma0 = -1.386294, gamma1 = 1, gamma2 = 1, lambda1 = 0,lambda2=0)\n{\n  C = do.call(expand.grid, rep(list(c(0,1)),r))\n  gc = rowSums(C)\n  Z <- rnorm(100000, 0, 1)\n  Mean34 <- mean((1-pnorm((pho^(-1)-1)^(-0.5)*Z,0,1))^2)\n  Mean123 = mean((1-pnorm((pho^(-1)-1)^(-0.5)*Z,0,1))^2*pnorm((pho^(-1)-1)^(-0.5)*Z,0,1))\n  pr.C= sapply(gc, function(x) {\n    mean(pnorm((pho^(-1) - 1)^(-0.5) * Z, 0, 1)^(r-x)*(1-pnorm((pho^(-1) - 1)^(-0.5) * Z, 0, 1))^x)\n  })\n  \n  mu1 = sum(sapply(1:2^r, function(x)\n  {\n    temp=gamma0 + gamma1 + gamma2*(C[x,1]-0.5) + lambda1*(C[x,1]*C[x,2]-Mean34) + lambda2*(C[x,2]*C[x,3]*(1-C[x,4])-Mean123)\n    exp(temp)/(1+exp(temp))*pr.C[x]\n  })) \n  mu0 = sum(sapply(1:2^r, function(x)\n  {\n    temp=gamma0 +  gamma2*(C[x,1]-0.5) + lambda2*(C[x,2]*C[x,3]*(1-C[x,4])-Mean123)\n    exp(temp)/(1+exp(temp))*pr.C[x]\n  }))\n  \n  cau.est= mu1 - mu0\n  #return(c(cau.est,mu1,mu0))\n  return(cau.est)\n}\n# outcome.pr = sapply(1:n, function(x)\n# {\n#   pr = gamma0+ gamma1*X[x] + gamma2*(C[x,1]-0.5) + lambda1*X[x]*(C[x,1]*C[x,2]-Mean34) + lambda2*(C[x,2]*C[x,3]*(1-C[x,4])-Mean123)\n#   exp(pr)/(1+exp(pr))\n# })",
+    "created" : 1371625518069.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3598092285",
+    "id" : "37913A75",
+    "lastKnownWriteTime" : 1371625746,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/Thesis_SimulationDR/Simulation2/TrueEst.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

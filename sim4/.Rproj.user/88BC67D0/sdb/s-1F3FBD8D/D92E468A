@@ -1,0 +1,15 @@
+{
+    "contents" : "filename = paste0('EstN',N,'n',nobs)\nrequire(boot)\nrequire(utils)\nrequire(BayDR)\nsource(\"Fun.R\")\n\npb = txtProgressBar(min=0,max=N,style=3)\n\n#estimates=as.data.frame(do.call(rbind,lapply(robs,function(r) {\nlapply(K,function(k) {\nest = as.data.frame(do.call(rbind,lapply(1:N,function(i) {\n  #print(r)\n  Dat=GenDat2(n=nobs,K=k,r=robs,rho=rho,gamma0=g0,gamma1=g1,gamma2=g2,lambda1=la1,lambda2=la2)\n  setTxtProgressBar(pb,i)\n  return(simFun(Dat))\n  \n})\n)\n)\nsave(est,g0,g1,g2,Delta,file=paste0('data/',filename,'_',g2,k,'_.Rdata'))\n#return(est)\n}\n)\n#colMeans((estimates-Delta)^2)\n\n#save(estimates,g0,g1,g2,Delta,file=paste0('data/',filename,'_',g2,'_.Rdata'))",
+    "created" : 1373794955167.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3253080016",
+    "id" : "D92E468A",
+    "lastKnownWriteTime" : 1373837329,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/sim4/mainPart.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

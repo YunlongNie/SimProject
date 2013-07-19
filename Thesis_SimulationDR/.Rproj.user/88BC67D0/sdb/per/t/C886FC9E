@@ -1,0 +1,16 @@
+{
+    "contents" : "pho=0.7\nZ <- rnorm(10000,0,1)\nMean34 <- mean((1-pnorm((pho^(-1)-1)^(-0.5)*Z,0,1))^2)\nMean123 = mean((1-pnorm((pho^(-1)-1)^(-0.5)*Z,0,1))^2*pnorm((pho^(-1)-1)^(-0.5)*Z,0,1))\n\nrequire(boot)\nx = logit(0.9);y=logit(0.05)\n\n(alpha3 = (Mean34*(x-y) + y)/(Mean34-Mean123))\n(alpha2 = x-y-alpha3)\n\n\nalpha2=2\nalpha3=2\nx = alpha2*(1-Mean34)+alpha3*(1-Mean123)\ninv.logit(x)\n\ny = -alpha2*Mean34-alpha3*Mean123\ninv.logit(y)\n\n\nalpha0 = (logit(0.5) + logit(0.05))/2\nalpha1 = (logit(0.5) - logit(0.05))/4\nr=4\nalpha2=1\nalpha3=3\nC = do.call(expand.grid, rep(list(c(0,1)),r))\n\nrange=apply(C,1,function(x){\n  \n  inv.logit(alpha0 + alpha1*(sum(x[1:3])-1.5) + alpha2*(x[3]*x[4]-Mean34) +\n    alpha3*(x[1]*x[2]*(1-x[3])-Mean123))\n  \n})\n\nrange(range)",
+    "created" : 1371758261652.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3480762700",
+    "id" : "C886FC9E",
+    "lastKnownWriteTime" : 1372314150,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/Thesis_SimulationDR/Simulation2/selectPrpWPara.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "\nN=3\nnobs=100\nrequire(boot)\ng0=logit(0.2)\ng1=1\ng2=0.8\nsource(\"mainpart.R\")",
+    "created" : 1372795479731.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3455157056",
+    "id" : "67213097",
+    "lastKnownWriteTime" : 1373148954,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SimulationBayDRwithDR/temp.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

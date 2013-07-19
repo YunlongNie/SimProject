@@ -1,0 +1,175 @@
+
+R version 2.15.2 (2012-10-26) -- "Trick or Treat"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-redhat-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> 
+> n=100
+> source("DatGeneration2.R")
+> source("TrueEst.R")
+> source("estimator.R")
+> require(boot)
+Loading required package: boot
+> #ls()
+> N = 30
+> r=4;pho=0.7;
+> alpha2 = 2;alpha1=0;alpha3=2 
+> gamma0 = -1.386294; gamma1 = 1; gamma2 = 1; lambda1 = 0;lambda2=0
+> 
+> source("MainPartprp.R")
+  |                                                                              |                                                                      |   0%Loading required package: LearnBayes
+
+Attaching package: ‘LearnBayes’
+
+The following object(s) are masked from ‘package:boot’:
+
+    darwin
+
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1464561 0.1122625 0.1147039 0.1210717 0.1035444 0.1162359 0.1080551 0.1127116 
+[1] 1
+  |                                                                              |==                                                                    |   3%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.16305925 0.09856025 0.16894083 0.18148598 0.10564390 0.12102912 0.12010861 
+ reg.sd.bs 
+0.10793387 
+[1] 2
+  |                                                                              |=====                                                                 |   7%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.08816639 0.10959714 0.13323679 0.13378594 0.12474042 0.13504940 0.14398831 
+ reg.sd.bs 
+0.10951077 
+[1] 3
+  |                                                                              |=======                                                               |  10%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.28986226 0.12982918 0.15196512 0.17350286 0.11407166 0.14682475 0.08442668 
+ reg.sd.bs 
+0.12444727 
+[1] 4
+  |                                                                              |=========                                                             |  13%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1567464 0.1155829 0.1276625 0.1303337 0.1206603 0.1305752 0.1313112 0.1128065 
+[1] 5
+  |                                                                              |============                                                          |  17%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2111240 0.1193814 0.3666573 0.3297370 0.1967421 0.3452432 0.4923187 0.1275015 
+[1] 6
+  |                                                                              |==============                                                        |  20%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3154970 0.1352876 0.6531354 0.6460783 0.3426635 0.3639715 0.4823667 0.1617612 
+[1] 7
+  |                                                                              |================                                                      |  23%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2996588 0.1176388 0.2972924 0.2849202 0.1380314 0.1630657 0.1515258 0.1253603 
+[1] 8
+  |                                                                              |===================                                                   |  27%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.02311779  0.09723100 -0.02709272 -0.03759853  0.08482698  0.11622797 
+  prp.sd.bs   reg.sd.bs 
+ 0.08967071  0.09859167 
+[1] 9
+  |                                                                              |=====================                                                 |  30%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.09867659 0.12682754 0.13086505 0.11389797 0.12320352 0.25702358 0.29074382 
+ reg.sd.bs 
+0.12634645 
+[1] 10
+  |                                                                              |=======================                                               |  33%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.25634149 0.11493373 0.20367562 0.22324067 0.09816329 0.18695230 0.23275551 
+ reg.sd.bs 
+0.13224498 
+[1] 11
+  |                                                                              |==========================                                            |  37%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3064300 0.1485516 0.0886558 0.2248462 0.1620071 0.2042235 0.2579303 0.1535162 
+[1] 12
+  |                                                                              |============================                                          |  40%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.08144348 0.10401947 0.12704328 0.10622779 0.10435135 0.15789073 0.22170957 
+ reg.sd.bs 
+0.10193190 
+[1] 13
+  |                                                                              |==============================                                        |  43%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2829683 0.1052045 0.3476155 0.3413009 0.1255155 0.1362966 0.1641243 0.1166178 
+[1] 14
+  |                                                                              |=================================                                     |  47%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.14316734 0.10655112 0.12735451 0.14492567 0.09401063 0.12229303 0.11092030 
+ reg.sd.bs 
+0.11322147 
+[1] 15
+  |                                                                              |===================================                                   |  50%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.19908157 0.09967146 0.18796696 0.23039950 0.12228585 0.14018828 0.14260241 
+ reg.sd.bs 
+0.10694319 
+[1] 16
+  |                                                                              |=====================================                                 |  53%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2658718 0.1203840 0.4838405 0.4881706 0.2977218 0.3078984 0.3753573 0.1422430 
+[1] 17
+  |                                                                              |========================================                              |  57%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.33780318 0.14595844 0.22887855 0.37123125 0.08843744 0.16496725 0.18692131 
+ reg.sd.bs 
+0.14911324 
+[1] 18
+  |                                                                              |==========================================                            |  60%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3271787 0.1371175 0.2348454 0.2865905 0.1568148 0.2870321 0.3645993 0.1407088 
+[1] 19
+  |                                                                              |============================================                          |  63%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2148910 0.1138154 0.3673001 0.3842176 0.1803776 0.2087782 0.2224601 0.1243645 
+[1] 20
+  |                                                                              |===============================================                       |  67%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2472618 0.1087304 0.3175890 0.3101019 0.1474826 0.1860200 0.2129866 0.1191542 
+[1] 21
+  |                                                                              |=================================================                     |  70%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.16863751 0.09843765 0.21375002 0.21536755 0.11338035 0.12812932 0.12273697 
+ reg.sd.bs 
+0.10856222 
+[1] 22
+  |                                                                              |===================================================                   |  73%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.30688959 0.10132381 0.26453729 0.27175611 0.09806263 0.09685317 0.09975496 
+ reg.sd.bs 
+0.09690325 
+[1] 23
+  |                                                                              |======================================================                |  77%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1190481 0.1085730 0.1615802 0.1627785 0.1348536 0.1572996 0.1793883 0.1126351 
+[1] 24
+  |                                                                              |========================================================              |  80%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.04512171  0.09794004 -0.01057329 -0.03746759  0.09249460  0.14170426 
+  prp.sd.bs   reg.sd.bs 
+ 0.07861278  0.10822207 
+[1] 25
+  |                                                                              |==========================================================            |  83%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.05960692 0.09780914 0.14241947 0.14152435 0.13868608 0.16810973 0.17610005 
+ reg.sd.bs 
+0.10680993 
+[1] 26
+  |                                                                              |=============================================================         |  87%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2163702 0.1284994 0.4115876 0.3323924 0.2986305 0.4716258 0.6590292 0.1380079 
+[1] 27
+  |                                                                              |===============================================================       |  90%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.08597519 0.12675426 0.13438687 0.09453949 0.17660828 0.22278144 0.37113369 
+ reg.sd.bs 
+0.12908600 
+[1] 28
+  |                                                                              |=================================================================     |  93%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2874823 0.1121848 0.3296723 0.3979232 0.1534057 0.1749071 0.1862605 0.1290356 
+[1] 29
+  |                                                                              |====================================================================  |  97%         reg       sd.reg          prp           dr    sd.dr.asp     sd.dr.bs 
+ 0.023334821  0.087986076 -0.008307902 -0.013388566  0.074588149  0.074892424 
+   prp.sd.bs    reg.sd.bs 
+ 0.073073727  0.084456539 
+[1] 30
+  |                                                                              |======================================================================| 100%
+There were 50 or more warnings (use warnings() to see the first 50)
+> save(cov.rate,res,mse, file=paste0("prpW",n,"_",N,".Rdata"))
+> 
+> #rm(list=ls())
+> 
+> proc.time()
+    user   system  elapsed 
+1328.813    0.122 1329.168 

@@ -1,0 +1,15 @@
+{
+    "contents" : "#:rm(list=ls())\nn=500\nsource(\"DatGeneration2.R\")\nsource(\"TrueEst.R\")\nsource(\"estimator.R\")\nrequire(boot)\n#ls()\nprint(n)\nN =500 \nr=4;pho=0.7;\nalpha2 = 0;alpha3=0 \ngamma0 = -1.386294; gamma1 = 1; gamma2 = 1; lambda1 = 2;lambda2=2\n\nsource(\"MainPart.R\")\nsave(cov.rate,res,mse, file=paste0(\"outW\",n,\"_\",N,\".Rdata\"))\nwarnings()\n#rm(list=ls())\n\n#colMeans((res-causal)^2)\n",
+    "created" : 1371624525467.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1630189774",
+    "id" : "A18790D8",
+    "lastKnownWriteTime" : 1371482994,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/Thesis_SimulationDR/Simulation2/outwrong.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,15 @@
+{
+    "contents" : "filename = paste0('EstN',N,'n',nobs)\nrequire(boot)\nrequire(utils)\n#file.copy(\"temp.R\", paste0('out/',filename,\".txt\"))\nsource(\"TrueEffect.R\")\nDelta=causal.est(gamma0=g0,gamma1=g1,gamma2=g2)\nsource(\"DatGeneration2.R\")\nsource(\"Fun.R\")\n\n#  print(i)\n#print(N)\npb = txtProgressBar(min=0,max=N,style=3)\n\n#estimates=as.data.frame(do.call(rbind,lapply(robs,function(r) {\nlapply(robs,function(r) {\nest = as.data.frame(do.call(rbind,lapply(1:N,function(i) {\n  #print(r)\n  Dat=DatGen(gamma0=g0,gamma1=g1,gamma2=g2,n=nobs,r=r)\n # print(i)\n  #  print(N)\n  setTxtProgressBar(pb,i)\n  return(simFun(Dat))\n  \n})\n)\n)\nsave(est,g0,g1,g2,Delta,file=paste0('data/',filename,'_',g2,r,'_.Rdata'))\n#return(est)\n}\n)\n#colMeans((estimates-Delta)^2)\n\n#save(estimates,g0,g1,g2,Delta,file=paste0('data/',filename,'_',g2,'_.Rdata'))",
+    "created" : 1373501637967.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1594800749",
+    "id" : "985A831",
+    "lastKnownWriteTime" : 1373628497,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SIm3/mainpart.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

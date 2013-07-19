@@ -1,0 +1,16 @@
+{
+    "contents" : "# res\n\nload(\"data/EstN1000n100.Rdata\")\n# g0 g1 g2 estimates Delta\ndir = \"data/exp/\" # or dir =\"data/\"\n\nfilenames=list.files(dir) # or filenames=list.files(\"data/\")\n\nres=as.data.frame(do.call(rbind,lapply(c(100,200,500),function(x){\ndo.call(rbind,lapply(filenames[grep(paste0(\"n\",x,\"_\"),filenames)],function(name){\n load(paste0(dir,name))\n names(estimates) =c(\"D\",\"S\",\"P\",\"B\")\n c(sqrt(colMeans((estimates-Delta)^2)),N=Delta,g2=g2,n=x)\n}\n)\n)\n}\n)\n))\nrequire(reshape2)\nres.melt=melt(res,id=c(\"n\",\"g2\"))\nres.melt$variable\nrequire(ggplot2)\n\n\nggplot(data=res.melt) +geom_text(aes(y=value,x=g2,label=variable,\n                                     color=factor(variable)),angle=15,\n                                 position = position_dodge(width=0.2))+\n  facet_grid(~n,scales = \"free_x\")+theme(legend.position = \"none\") +\n  scale_size_discrete(range = c(3, 5))+xlab(\"lambda\")+ylab(\"RMSE\")\n\nsource(\"~/Dropbox/UBC/Thesis/Simulation_Thesis/printFigure.R\")\n\n### one set ###\nfigName= \"SimulationBayDR1\"\ncapName=\"Root-mean-squared error of estimates $\\\\widehat \\\\Delta_{D},\\\\widehat \\\\Delta_{S},\\\\widehat \\\\Delta_{P},\\\\widehat \\\\Delta_{B}$.\n$\\\\widehat \\\\Delta_{N}=0$, so N represents the true value of $\\\\Delta$.\"\nggsave(filename=paste0(\"~/Dropbox/UBC/Thesis/\",figName,\".pdf\"),width=10,height=4.5)  \n\nprint.figure(writeto=\"~/Dropbox/UBC/Thesis/SimulationBayDRPlot1.tex\",filename=figName,placement=\"h\",\n             caption=capName,label=\"SimDR1\")\n\n### another set ###\nfigName= \"SimulationBayDR2\"\ncapName=\"Root-mean-squared error of estimates $\\\\widehat \\\\Delta_{D},\\\\widehat \\\\Delta_{S},\\\\widehat \\\\Delta_{P},\\\\widehat \\\\Delta_{B}$.\n$\\\\widehat \\\\Delta_{N}=0$, so N represents the true value of $\\\\Delta$. \nThe exposure-generating mechanism is updated into \\\\eqref{expModel2}.\"\nggsave(filename=paste0(\"~/Dropbox/UBC/Thesis/\",figName,\".pdf\"),width=10,height=4.5)  \nprint.figure(writeto=\"~/Dropbox/UBC/Thesis/SimulationBayDRPlot2.tex\",filename=figName,placement=\"h\",\n             caption=capName,label=\"SimDR2\")\n\n\n\n\n\n\n\n\n",
+    "created" : 1373136762792.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2403692144",
+    "id" : "20ED924B",
+    "lastKnownWriteTime" : 1373570421,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SimulationBayDRwithDR/GetPlotForThesis.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

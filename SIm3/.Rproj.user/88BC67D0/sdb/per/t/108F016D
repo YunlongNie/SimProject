@@ -1,0 +1,16 @@
+{
+    "contents" : "load(\"ParaSet.Rdata\")\nrequire(xtable)\nnames(Paraset)[1:2] = c(\"n\",\"$\\\\lambda$\")\nnobs=500\n#subset(Paraset,n==nobs)\nxtable = xtable(subset(Paraset[,1:2],n==nobs),caption=\"$\\\\lambda$ values are chosen according to the goodness of fit test.\",\n                label=\"LambdaValueH1\",digits=c(0,0,1))\nsink(\"~/Dropbox/UBC/Thesis/SimH1table.tex\")\nprint.xtable(xtable,table.placement=\"H\",include.rownames=FALSE,sanitize.colnames.function = identity)\nsink()",
+    "created" : 1373708827513.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3909394535",
+    "id" : "108F016D",
+    "lastKnownWriteTime" : 1373744995,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SIm3/GetTable.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

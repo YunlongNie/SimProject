@@ -1,0 +1,15 @@
+{
+    "contents" : "\n\nload(\"ParaSet.Rdata\")\nlibrary(boot)\nsubset = subset(Paraset,obs==500)\n#robs =c(6,9,12)\nfor(j in 1:nrow(subset))\n{\nrobs=4\nN=999\nx=as.numeric(subset[j,])\nnobs=x[1]\ng0=x[4]\ng1=x[3]\ng2=x[2]\nsource(\"mainpart.R\")\ngc()\n}\n",
+    "created" : 1373501624009.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3746982386",
+    "id" : "6D219399",
+    "lastKnownWriteTime" : 1373693190,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SIm3/tempNew.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

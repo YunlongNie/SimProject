@@ -1,0 +1,16 @@
+{
+    "contents" : "source(\"Simulation2/TrueEst.R\")\nr=4;pho=0.7;\nalpha2 = 0;alpha3=0 \ngamma0 = -1.386294; gamma1 = 1; gamma2 = 1; lambda1 = 2;lambda2=2\n\ncausal= causal.est(r=r,pho=pho,\n                    gamma0 = gamma0, gamma1 = gamma1, gamma2 = gamma2, lambda1 = lambda1,lambda2=lambda2)\n\nfilenames = list.files(path=\"Simulation2/\")\ninput.file = filenames[grep(\"outW\",filenames)]\n\n\nr=4;pho=0.7;\nalpha2 = 2;alpha1=0;alpha3=2 \ngamma0 = -1.386294; gamma1 = 1; gamma2 = 1; lambda1 = 0;lambda2=0\n\ncausal = causal.est(r=r,pho=pho,\n                         gamma0 = gamma0, gamma1 = gamma1, gamma2 = gamma2, lambda1 = lambda1,lambda2=lambda2)\n\nfilenames = list.files(path=\"Simulation2/\")\ninput.file = filenames[grep(\"prpW\",filenames)]\n\nfor (i in 1:length(input.file))\n{\nload(paste0(\"Simulation2/\",input.file[i]))\nZ = qnorm(0.975)\ncon.reg.asp = data.frame(lower=res$reg-Z*res$sd.reg,upper=res$reg+Z*res$sd.reg)\ncon.reg.bs = data.frame(lower=res$reg-Z*res$reg.sd.bs,upper=res$reg+Z*res$reg.sd.bs)\n# cov.reg.asp = coverage.rate(con.reg.asp,causal)\n# cov.reg.bs = coverage.rate(con.reg.bs,causal)\n\n\ncon.prp.bs = data.frame(lower=res$prp-Z*res$prp.sd.bs,upper=res$prp+Z*res$prp.sd.bs)\n#cov.prp.bs = coverage.rate(con.prp.bs,causal)\n\ncon.dr.asp =data.frame(lower=res$dr-Z*res$sd.dr.asp,upper=res$dr+Z*res$sd.dr.asp)\ncon.dr.bs = data.frame(lower=res$dr-Z*res$sd.dr.bs,upper=res$dr+Z*res$sd.dr.bs)\n# cov.dr.asp = coverage.rate(con.dr.asp,causal)\n# cov.dr.bs = coverage.rate(con.dr.bs,causal)\n\n\ncov.rate = c(cov.reg.asp = coverage.rate(con.reg.asp,causal),\n             cov.reg.bs = coverage.rate(con.reg.bs,causal),\n             cov.dr.asp = coverage.rate(con.dr.asp,causal),\n             cov.dr.bs = coverage.rate(con.dr.bs,causal),\n             cov.prp.bs = coverage.rate(con.prp.bs,causal)\n)\n\nmse = colMeans(res[,c(\"dr\",\"prp\",\"reg\")] -causal)^2\nsave(mse,cov.rate,res,causal,file=paste0(\"Simulation2/\",input.file[i]))\n}\n\n",
+    "created" : 1371624596218.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3931961793",
+    "id" : "E88169F0",
+    "lastKnownWriteTime" : 1371674006,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/Thesis_SimulationDR/Simulation2/correct.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "figName= paste0(\"SimLast\",la)\nggsave(plot=plotsave,filename=paste0(\"~/Dropbox/UBC/Thesis/\",figName,\".pdf\"),width=10,height=6)  \ncap1=\"RRMSE of estimates $\\\\widehat \\\\Delta_{D},\\\\widehat \\\\Delta_{S0},\\\\widehat \\\\Delta_{P},\n\\\\widehat \\\\Delta_{B0},\\\\widehat \\\\Delta_{S1},\n\\\\widehat \\\\Delta_{B1},\\\\widehat \\\\Delta_{S2}\n,\\\\widehat \\\\Delta_{B2}$ based on $\\\\rho=0.3, \\\\gamma_0 = \\\\text{logit(0.2)},\\\\gamma_1=\\\\gamma_2=1$ and \"\n\ncap2 = paste0(\"$\\\\lambda_1=\\\\lambda_2=\",la,\"$. \")\n\ncap3 = \"Each panel is simulated under different values of number of confounder blocks, $k$, and sample size, $n$. \"\n\ncapName=paste0(cap1,cap2,cap3)\n\nsource(\"~/Dropbox/UBC/Thesis/Simulation_Thesis/printFigure.R\")\n\nprint.figure(writeto=paste0(\"~/Dropbox/UBC/Thesis/\",figName,\".tex\"),filename=figName,placement=\"h\",\n             caption=capName,label=figName)",
+    "created" : 1374184991172.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1502488845",
+    "id" : "3D981F55",
+    "lastKnownWriteTime" : 1374188037,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/sim4/savePlot.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

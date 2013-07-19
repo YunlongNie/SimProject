@@ -1,0 +1,15 @@
+{
+    "contents" : "## estimators. \n \n\n# given Y, X,C\n# causal.est()\n# \n# dat = DatGen(n=10000)\n\nest.reg=function(dat)\n{\nglm.fit = glm(Y~.,data=dat, family=\"binomial\")\n\nnew.data=cbind(X=1,dat[,-c(1:2)])\npr1 = predict(glm.fit,newdata=new.data)\n\nest.mu1= mean(exp(pr1)/ (1+exp(pr1)))\n\nnew.data=cbind(X=0,dat[,-c(1:2)])\npr0 = predict(glm.fit,newdata=new.data)\nest.mu0 = mean(exp(pr0)/ (1+exp(pr0)))\n\nest.reg = est.mu1 - est.mu0\n\n\n######\n\ns = summary(glm.fit)\nestCov = s$cov.scaled\n\nb0 = mean(exp(pr1)/ (1+exp(pr1))^2) -  mean(exp(pr0)/ (1+exp(pr0))^2)\nbx = mean(exp(pr1)/ (1+exp(pr1))^2)\n\nder = c(b0,bx,sapply(grep(\"C\",names(dat)), function(x){\nc = dat[,x]\nmean(exp(pr1)/ (1+exp(pr1))^2*c ) -  mean(exp(pr0)/ (1+exp(pr0))^2*c )\n}\n))\n     \nlist(est=est.reg, sd=sqrt(sum(der%*%estCov*der)))\n  \n}\n\nest.prp=function(datY)\n{\n  dat = datY[,-1]\n  glm.fit = glm(X~.,data=dat, family=\"binomial\")\n  \n  prp = fitted(glm.fit)\n  Y = datY$Y\n  X= datY$X\n  est1 = mean(X*Y/prp)\n  \n  est0 = mean((1-X)*Y/(1-prp))\n  \n  est.prp=est1-est0\n  est.prp\n#   #c(est.prp,est1=est1,est0=est0)\n#   \n#   ###########\n#   s = summary(glm.fit)\n#   estCov = s$cov.scaled\n#   \n#   \n#   temp.dat = cbind(int=1,dat[,-grep(\"X\",names(dat))])  \n#   der = apply(temp.dat,2, function(x) {  \n#   mean((X*Y/prp^2 + (1-X)*Y/(1-prp)^2)*x)\n#   }  \n#   )\n#   sqrt(est1+ est0 - est.prp^2 - \n#     sum(der%*%estCov*der))\n  \n  ###########\n}\n\n\nest.dr = function(dat)\n{\n  glm.fit = glm(Y~.,data=dat, family=\"binomial\")\n  new.data=cbind(X=1,dat[,-c(1:2)])\n  pr1 = predict(glm.fit,newdata=new.data)\n  pr1 = exp(pr1)/(1+exp(pr1))\n  new.data=cbind(X=0,dat[,-c(1:2)])\n  pr0 = predict(glm.fit,newdata=new.data)\n  pr0 = exp(pr0)/(1+exp(pr0))\n  glm.fit = glm(X~.,data=dat[,-1], family=\"binomial\")\n  prp = fitted(glm.fit)\n  Y = dat$Y\n  X= dat$X\n  \n  est1 = mean( (Y*X - (X-prp)*pr1)/prp )\n  est0 = mean( (Y*(1-X) + (X-prp)*pr0)/(1-prp)) \n  est.dr = est1 - est0  \n  ## sandwich se\n  sd.dr = sqrt(sum(((Y*X - (X-prp)*pr1)/prp - (Y*(1-X) + (X-prp)*pr0)/(1-prp)-est.dr)^2)/nrow(dat)^2)\n  \n  list(est.dr=est.dr,sd.dr=sd.dr)\n  #c(est.dr,est1=est1,est0=est0)\n}\n  \n\nsd.bs <- function(dat,B=1000)\n{\n  est.boos = do.call(rbind,lapply(1:B,function(x)\n    {\n    b.sample = sample(1:nrow(dat),size=nrow(dat),replace=TRUE)\n    dr= est.dr(dat[b.sample,])$est.dr\n    prp = est.prp(dat[b.sample,])\n    reg = est.reg(dat[b.sample,])$est\n    c(dr,prp,reg)\n  }))\n  \n  est.sd = apply(est.boos,2,sd)\n  list(dr=est.sd[1],prp=est.sd[2],reg=est.sd[3])\n}\n\n\ncoverage.rate=function(con.matrix,causal) {\n  mean(apply(con.matrix,1,function(x)\n  {x[1] < causal& causal<x[2]}\n  ))\n}\n\n",
+    "created" : 1373398674924.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2953097216",
+    "id" : "CE0C5701",
+    "lastKnownWriteTime" : 1371109746,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SimulationBayDRwithDR/estimator.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

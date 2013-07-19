@@ -1,0 +1,1983 @@
+
+R version 2.15.2 (2012-10-26) -- "Trick or Treat"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-redhat-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> 
+> n=100
+> source("DatGeneration2.R")
+> source("TrueEst.R")
+> source("estimator.R")
+> require(boot)
+Loading required package: boot
+> #ls()
+> N = 500
+> r=4;pho=0.7;
+> alpha2 = 2;alpha1=0;alpha3=2 
+> gamma0 = -1.386294; gamma1 = 1; gamma2 = 1; lambda1 = 0;lambda2=0
+> 
+> source("MainPartprp.R")
+  |                                                                              |                                                                      |   0%Loading required package: LearnBayes
+
+Attaching package: ‘LearnBayes’
+
+The following object(s) are masked from ‘package:boot’:
+
+    darwin
+
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+0.034675967 0.083586647 0.003745433 0.002792239 0.071612882 0.084981366 
+  prp.sd.bs   reg.sd.bs 
+0.068458629 0.086644266 
+[1] 1
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2110811 0.1161348 0.2366410 0.2282161 0.1799037 0.2784416 0.3218831 0.1198369 
+[1] 2
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2939323 0.1187673 0.2126031 0.2193672 0.1255485 0.1492308 0.1176111 0.1229527 
+[1] 3
+  |                                                                              |                                                                      |   1%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.17669040 0.11180596 0.01743970 0.04235712 0.12123524 0.24146064 0.08657916 
+ reg.sd.bs 
+0.12751945 
+[1] 4
+  |                                                                              |=                                                                     |   1%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.02641188  0.10105382 -0.09855385 -0.07577024  0.08325681  0.22239723 
+  prp.sd.bs   reg.sd.bs 
+ 0.07446586  0.10400891 
+[1] 5
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2462957 0.1244422 0.2199387 0.2249079 0.1289381 0.1818638 0.2335389 0.1335299 
+[1] 6
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1384348 0.1192454 0.6174177 0.5227687 0.2613838 0.9183226 1.1766877 0.1325528 
+[1] 7
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.16185994 0.12693086 0.09059611 0.10442238 0.10367285 0.13212807 0.15924545 
+ reg.sd.bs 
+0.11557427 
+[1] 8
+  |                                                                              |=                                                                     |   2%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.20873205 0.12435668 0.07319975 0.05008531 0.14508546 0.19120185 0.08681252 
+ reg.sd.bs 
+0.12535224 
+[1] 9
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2463687 0.1302094 0.9402909 0.8638343 0.6488159 0.3794172 0.5096604 0.1373299 
+[1] 10
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+0.011452856 0.105036980 0.007277083 0.018455314 0.117616386 0.132978421 
+  prp.sd.bs   reg.sd.bs 
+0.127644085 0.110402872 
+[1] 11
+  |                                                                              |==                                                                    |   2%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2428170 0.1178497 0.1536278 0.1616274 0.1399305 0.6583068 0.9083793 0.1243942 
+[1] 12
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.18611615 0.10550941 0.09514802 0.09877600 0.09143112 0.08967647 0.07957253 
+ reg.sd.bs 
+0.09895409 
+[1] 13
+  |                                                                              |==                                                                    |   3%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1158558 0.1111874 0.2040902 0.2119042 0.1450170 0.1592596 0.1636544 0.1286338 
+[1] 14
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3084665 0.1290864 0.2462614 0.2581062 0.1317960 0.1791315 0.1762719 0.1329187 
+[1] 15
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.14512528 0.10942392 0.08381255 0.08378047 0.12175029 0.13590377 0.09047456 
+ reg.sd.bs 
+0.11352072 
+[1] 16
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.08668147 0.10459533 0.26604499 0.10529700 0.09260838 0.12919275 0.40925944 
+ reg.sd.bs 
+0.10048493 
+[1] 17
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.24299088 0.10931780 0.18505482 0.18246529 0.09658913 0.11311520 0.12510072 
+ reg.sd.bs 
+0.10679201 
+[1] 18
+  |                                                                              |===                                                                   |   4%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.23191316 0.10015933 0.19179953 0.19944957 0.09074558 0.09577921 0.09063959 
+ reg.sd.bs 
+0.09881757 
+[1] 19
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2310780 0.1287156 0.2872763 0.2632951 0.2099102 0.2458030 0.2423990 0.1395496 
+[1] 20
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1991155 0.1058429 0.2214101 0.2141005 0.1092119 0.1211865 0.1385639 0.1113426 
+[1] 21
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.40025334 0.11415254 0.27461620 0.31712573 0.09054948 0.12322682 0.08010718 
+ reg.sd.bs 
+0.11797708 
+[1] 22
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+0.115294204 0.104081715 0.004312647 0.036726248 0.099789918 0.137303903 
+  prp.sd.bs   reg.sd.bs 
+0.073683117 0.100876735 
+[1] 23
+  |                                                                              |===                                                                   |   5%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1607391 0.1128653 0.2364406 0.2231520 0.1497927 0.1984275 0.2124732 0.1215017 
+[1] 24
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1773816 0.1181668 0.0182673 0.0614797 0.1243533 0.1447783 0.1071586 0.1253819 
+[1] 25
+  |                                                                              |====                                                                  |   5%         reg       sd.reg          prp           dr    sd.dr.asp     sd.dr.bs 
+0.1124140000 0.1233172974 0.0005980811 0.0102645464 0.1099487971 0.1423338391 
+   prp.sd.bs    reg.sd.bs 
+0.0963721961 0.1282971782 
+[1] 26
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.09235291  0.12757722 -0.06215930 -0.08869838  0.15404363  0.17880411 
+  prp.sd.bs   reg.sd.bs 
+ 0.07698250  0.12408013 
+[1] 27
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.09994409 0.10353467 0.01125339 0.00488373 0.08759166 0.12876042 0.07047625 
+ reg.sd.bs 
+0.10406505 
+[1] 28
+  |                                                                              |====                                                                  |   6%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.15805203 0.11040269 0.09176965 0.09100853 0.09892243 0.10099301 0.09444937 
+ reg.sd.bs 
+0.10844757 
+[1] 29
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.11113777 0.10714089 0.04420243 0.03533852 0.10872279 0.15513026 0.08028585 
+ reg.sd.bs 
+0.11028371 
+[1] 30
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3208246 0.1218194 0.2030796 0.2154942 0.1558988 0.3068666 0.1296229 0.1244933 
+[1] 31
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2727476 0.1173226 0.3243909 0.3613338 0.1385371 0.1857639 0.2134140 0.1239304 
+[1] 32
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4011214 0.1045086 0.6294726 0.4618428 0.1265223 0.1917480 0.6229661 0.1039484 
+[1] 33
+  |                                                                              |=====                                                                 |   7%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.02462281  0.12403091 -0.12680680 -0.10220313  0.09055259  0.16714057 
+  prp.sd.bs   reg.sd.bs 
+ 0.07765900  0.13891598 
+[1] 34
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3211984 0.1173741 0.3613578 0.3612305 0.1587083 0.2051784 0.2001321 0.1248912 
+[1] 35
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.11739519 0.10481176 0.08888497 0.09837147 0.07928365 0.08844565 0.09682010 
+ reg.sd.bs 
+0.09968670 
+[1] 36
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.24504496 0.09607717 0.21815881 0.24028134 0.08570096 0.11879226 0.13773035 
+ reg.sd.bs 
+0.10452616 
+[1] 37
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2453795 0.1203932 0.2175844 0.2278687 0.1390655 0.1642436 0.1691468 0.1255825 
+[1] 38
+  |                                                                              |=====                                                                 |   8%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.19830679 0.09933627 0.10050022 0.11460677 0.08941746 0.08750646 0.06931316 
+ reg.sd.bs 
+0.09137983 
+[1] 39
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3877002 0.1002284 0.4281534 0.4044594 0.1248692 0.2035644 0.2597331 0.1050633 
+[1] 40
+  |                                                                              |======                                                                |   8%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3249051 0.1231035 0.2988631 0.3446643 0.1583689 0.3096703 0.3641432 0.1325109 
+[1] 41
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1582959 0.1077226 0.1212702 0.1307472 0.1059297 0.1300119 0.1189028 0.1065536 
+[1] 42
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3782480 0.1250794 0.2105180 0.2162059 0.1375665 0.2089304 0.1429464 0.1212681 
+[1] 43
+  |                                                                              |======                                                                |   9%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2053736 0.1173798 0.1975698 0.1996523 0.1228906 0.1411483 0.1760219 0.1131583 
+[1] 44
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3029008 0.1249225 0.2436417 0.2216788 0.1620827 0.1947274 0.3124096 0.1258259 
+[1] 45
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.48367302 0.14278810 0.24616456 0.01474177 0.52192439 0.50966979 0.09725621 
+ reg.sd.bs 
+0.15829484 
+[1] 46
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.10670798 0.10712706 0.06990064 0.05480502 0.10669986 0.25892509 0.47560307 
+ reg.sd.bs 
+0.10908730 
+[1] 47
+  |                                                                              |=======                                                               |   9%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.17828232 0.10668593 0.11663693 0.12740151 0.09141133 0.10810945 0.12389543 
+ reg.sd.bs 
+0.10528987 
+[1] 48
+  |                                                                              |=======                                                               |  10%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2547706 0.1309302 0.1143422 0.1347311 0.1399597 0.5424560 0.5922746 0.1372515 
+[1] 49
+         reg       sd.reg          prp           dr    sd.dr.asp     sd.dr.bs 
+ 0.004198820  0.092392698 -0.005750908 -0.008499664  0.079479556  0.109193795 
+   prp.sd.bs    reg.sd.bs 
+ 0.097642823  0.096368926 
+[1] 50
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.06605322 0.10772007 0.13298780 0.12599585 0.13933284 0.18352687 0.20386337 
+ reg.sd.bs 
+0.11404187 
+[1] 51
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.32293354 0.13782518 0.12577953 0.10821977 0.23380721 0.27157388 0.09990037 
+ reg.sd.bs 
+0.13442248 
+[1] 52
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.10086374  0.09262896 -0.13372410 -0.12900716  0.07612854  0.08909195 
+  prp.sd.bs   reg.sd.bs 
+ 0.07577235  0.09734702 
+[1] 53
+  |                                                                              |=======                                                               |  11%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.07597093  0.09782068 -0.13334329 -0.13367906  0.07932116  0.08704582 
+  prp.sd.bs   reg.sd.bs 
+ 0.07777051  0.09906698 
+[1] 54
+  |                                                                              |========                                                              |  11%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.06174182 0.10580940 0.09518026 0.10224014 0.12942731 0.15166891 0.15925058 
+ reg.sd.bs 
+0.11960729 
+[1] 55
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.18820871 0.11908223 0.03723518 0.02225243 0.11654484 0.13373962 0.07449610 
+ reg.sd.bs 
+0.11812235 
+[1] 56
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2548235 0.1202351 0.3319936 0.3285568 0.1777230 0.3898473 0.4465428 0.1286525 
+[1] 57
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3573025 0.1225130 0.2562106 0.2501379 0.1590883 0.2143283 0.2443006 0.1220120 
+[1] 58
+  |                                                                              |========                                                              |  12%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3298778 0.1364650 0.3510375 0.4100438 0.1055840 0.1866221 0.3580888 0.1477195 
+[1] 59
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.01036580  0.10501171 -0.03396272 -0.06487333  0.13184278  0.24885634 
+  prp.sd.bs   reg.sd.bs 
+ 0.08941061  0.11144495 
+[1] 60
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.05519541  0.13106285 -0.03025988 -0.01807049  0.11164510  0.16110339 
+  prp.sd.bs   reg.sd.bs 
+ 0.11666084  0.14135194 
+[1] 61
+  |                                                                              |=========                                                             |  12%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2022677 0.1153823 0.2483829 0.2649422 0.1720394 0.2231984 0.2573408 0.1198305 
+[1] 62
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2026422 0.1102658 0.2051836 0.2131217 0.1159757 0.1410393 0.1542827 0.1156836 
+[1] 63
+  |                                                                              |=========                                                             |  13%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3091771 0.1210775 0.2456149 0.2466464 0.1093986 0.1345007 0.1160303 0.1124434 
+[1] 64
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3920035 0.1112195 0.4025152 0.3834590 0.1320653 0.1536743 0.1640465 0.1151976 
+[1] 65
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2761940 0.1193077 0.1948729 0.1727463 0.1642671 0.2203856 0.2329127 0.1246607 
+[1] 66
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3480994 0.1128584 0.3452747 0.3550467 0.1275429 0.1640601 0.2008376 0.1187139 
+[1] 67
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2401003 0.1293360 0.3693549 0.3702712 0.2010202 0.2749540 0.3397141 0.1355727 
+[1] 68
+  |                                                                              |==========                                                            |  14%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1920708 0.1092884 0.2089603 0.2285925 0.1308587 0.1660916 0.2143870 0.1164028 
+[1] 69
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.15630039  0.12120827  0.04967001 -0.10677976  0.31748066  0.39441939 
+  prp.sd.bs   reg.sd.bs 
+ 0.11047147  0.12220809 
+[1] 70
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2479808 0.1269509 0.2309567 0.1789609 0.2134613 0.2508548 0.2243805 0.1351490 
+[1] 71
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.09171705 0.11825886 0.17754272 0.20762275 0.20930918 0.26749920 0.29775353 
+ reg.sd.bs 
+0.13679973 
+[1] 72
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.25477147 0.12387612 0.11402954 0.12114476 0.14236012 0.17230475 0.08448355 
+ reg.sd.bs 
+0.12788835 
+[1] 73
+  |                                                                              |==========                                                            |  15%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2349668 0.1184741 0.2700903 0.2797622 0.1557902 0.4784688 0.5035784 0.1291358 
+[1] 74
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2837502 0.1328611 0.3274964 0.3079131 0.2135680 0.3035841 0.3535990 0.1357643 
+[1] 75
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2535916 0.1186930 0.2619059 0.2483781 0.1632934 0.2263610 0.2354330 0.1221092 
+[1] 76
+  |                                                                              |===========                                                           |  15%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2828367 0.1137789 0.2048085 0.2235834 0.1064303 0.1458214 0.1837287 0.1141045 
+[1] 77
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2686769 0.1091160 0.2518599 0.2352451 0.1161352 0.1174653 0.1232903 0.1054064 
+[1] 78
+  |                                                                              |===========                                                           |  16%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1178768 0.1174072 0.2157583 0.1922834 0.2048455 0.2823765 0.4149852 0.1250790 
+[1] 79
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3145949 0.1254674 0.5652989 0.5129212 0.2074400 0.3392316 0.4860046 0.1386276 
+[1] 80
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.37520249 0.14157656 0.03552449 0.30004796 0.12144864 0.17070127 0.11982285 
+ reg.sd.bs 
+0.14817516 
+[1] 81
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2190045 0.1032878 0.2104057 0.1913261 0.1038731 0.1219079 0.2024115 0.1051856 
+[1] 82
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.01513982 0.10171971 0.19000832 0.18773280 0.17400481 0.47971629 0.61672463 
+ reg.sd.bs 
+0.11510272 
+[1] 83
+  |                                                                              |============                                                          |  17%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2769525 0.1170540 0.1991780 0.2073847 0.1168820 0.1504608 0.1266845 0.1214784 
+[1] 84
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3988819 0.1095264 0.3178155 0.3219649 0.1651463 0.1935599 0.2375091 0.1109689 
+[1] 85
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2663363 0.1296252 0.2770963 0.2722289 0.1815617 0.2442191 0.2954621 0.1406415 
+[1] 86
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2104390 0.1271903 0.4330217 0.2807263 0.2988250 0.4691549 0.3868904 0.1331987 
+[1] 87
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2956514 0.1026488 0.4289583 0.3799663 0.1362546 0.1672481 0.2313121 0.1177540 
+[1] 88
+  |                                                                              |============                                                          |  18%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3577968 0.1306892 0.1946148 0.2869279 0.1049304 0.2367703 0.1669897 0.1325297 
+[1] 89
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2557357 0.1162428 0.3828458 0.3426371 0.1683753 0.2594654 0.3417930 0.1332857 
+[1] 90
+  |                                                                              |=============                                                         |  18%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.13895353 0.10219678 0.05615462 0.04328422 0.08866028 0.10937662 0.08002839 
+ reg.sd.bs 
+0.09938998 
+[1] 91
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.17894275 0.09961156 0.11998338 0.12310476 0.08297726 0.09582258 0.07714436 
+ reg.sd.bs 
+0.09694215 
+[1] 92
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.12418983 0.11035097 0.06937553 0.06337695 0.10582012 0.13706134 0.13430895 
+ reg.sd.bs 
+0.10909468 
+[1] 93
+  |                                                                              |=============                                                         |  19%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.28637683  0.12593750  0.08731469 -0.03821561  0.29244084  0.37310443 
+  prp.sd.bs   reg.sd.bs 
+ 0.07478237  0.12075283 
+[1] 94
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.16245269 0.10915269 0.10409427 0.09739949 0.10093891 0.10920331 0.10497846 
+ reg.sd.bs 
+0.10520472 
+[1] 95
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.09977322 0.08688133 0.17397184 0.19379461 0.14614328 0.17346100 0.19492636 
+ reg.sd.bs 
+0.09597427 
+[1] 96
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.5036658 0.1192496 0.6014549 0.5885061 0.1371511 0.1928337 0.3536597 0.1279672 
+[1] 97
+  |                                                                              |==============                                                        |  19%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.11045926 0.10377914 0.05484651 0.06268850 0.09114608 0.14065681 0.11727207 
+ reg.sd.bs 
+0.10456472 
+[1] 98
+  |                                                                              |==============                                                        |  20%         reg       sd.reg          prp           dr    sd.dr.asp     sd.dr.bs 
+ 0.174680357  0.129890004 -0.008487376  0.098571922  0.103442295  0.168407846 
+   prp.sd.bs    reg.sd.bs 
+ 0.091283636  0.131172633 
+[1] 99
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.07260080  0.11345575 -0.04097781 -0.04587245  0.11192541  0.12730234 
+  prp.sd.bs   reg.sd.bs 
+ 0.07192153  0.11532985 
+[1] 100
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4356418 0.1037315 0.5548461 0.4909644 0.1156353 0.1182669 0.1660705 0.1094504 
+[1] 101
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2859763 0.1247071 0.4050565 0.3564657 0.1697438 0.2575641 0.3750703 0.1346247 
+[1] 102
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1760339 0.1177504 0.2320749 0.2054381 0.1613957 0.2165745 0.2586708 0.1290747 
+[1] 103
+  |                                                                              |==============                                                        |  21%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2936537 0.1409954 0.2674573 0.3045620 0.1092260 0.1537010 0.3253621 0.1311249 
+[1] 104
+  |                                                                              |===============                                                       |  21%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2287736 0.1111287 0.1561401 0.1506111 0.1065234 0.1103923 0.1198448 0.1128185 
+[1] 105
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1452679 0.1140348 0.1013759 0.1153972 0.1086516 0.1478176 0.1566299 0.1138587 
+[1] 106
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4006515 0.1382451 0.3585883 0.3105124 0.2200854 0.8117569 0.5013697 0.1421097 
+[1] 107
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.03418566 0.11239735 0.01106450 0.02872835 0.10719364 0.14036124 0.13771522 
+ reg.sd.bs 
+0.11657653 
+[1] 108
+  |                                                                              |===============                                                       |  22%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.17023654 0.09713017 0.17759522 0.19221896 0.10603887 0.11164923 0.11715962 
+ reg.sd.bs 
+0.10326121 
+[1] 109
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1698205 0.1183241 0.1957365 0.2117168 0.1484459 0.2029074 0.2241487 0.1210042 
+[1] 110
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.12741925  0.08809453 -0.17428076 -0.16781934  0.07640389  0.07844063 
+  prp.sd.bs   reg.sd.bs 
+ 0.07314423  0.08579932 
+[1] 111
+  |                                                                              |================                                                      |  22%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.10047344 0.11074340 0.10149648 0.09374513 0.13479748 0.22490236 0.21378806 
+ reg.sd.bs 
+0.11424541 
+[1] 112
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.24401556 0.11255859 0.15448568 0.16207221 0.08543982 0.09489510 0.07612944 
+ reg.sd.bs 
+0.10265264 
+[1] 113
+  |                                                                              |================                                                      |  23%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1321807 0.1117414 0.2047243 0.1893495 0.1893416 0.3725921 0.5085213 0.1138384 
+[1] 114
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1297192 0.1075757 0.1418977 0.1476660 0.1159675 0.1946502 0.2029274 0.1108313 
+[1] 115
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3518238 0.1217066 0.2858299 0.2835406 0.1015714 0.1714224 0.1875963 0.1267325 
+[1] 116
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1027975 0.1115782 0.1459128 0.1833508 0.1330892 0.1722284 0.1792491 0.1174654 
+[1] 117
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.09597961  0.11477055  0.01254474 -0.01204708  0.13656973  0.25121438 
+  prp.sd.bs   reg.sd.bs 
+ 0.07450861  0.11891003 
+[1] 118
+  |                                                                              |=================                                                     |  24%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.02869319  0.08839977 -0.03589105 -0.03314751  0.08969123  0.12970997 
+  prp.sd.bs   reg.sd.bs 
+ 0.13821933  0.09658481 
+[1] 119
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2638928 0.1090213 0.3112958 0.2969962 0.1232353 0.1516550 0.1908576 0.1196560 
+[1] 120
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2892217 0.1299941 0.3699839 0.3908670 0.1504132 0.1683355 0.2220196 0.1286106 
+[1] 121
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.35677597 0.12273302 0.17822771 0.07169977 0.21073491 0.47616255 0.07991950 
+ reg.sd.bs 
+0.11680722 
+[1] 122
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.14280167 0.10206398 0.08538818 0.09827759 0.12293526 0.13447780 0.14298656 
+ reg.sd.bs 
+0.10848024 
+[1] 123
+  |                                                                              |=================                                                     |  25%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2829231 0.1157696 0.3026340 0.2712945 0.1706283 0.2714573 0.2536125 0.1266071 
+[1] 124
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3212158 0.1204520 0.3083652 0.2710848 0.1589733 0.1898541 0.2437856 0.1262351 
+[1] 125
+  |                                                                              |==================                                                    |  25%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.13397095  0.14797395 -0.07778716 -0.11196018  0.21733192  0.31732606 
+  prp.sd.bs   reg.sd.bs 
+ 0.08904002  0.14836634 
+[1] 126
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2318878 0.1020407 0.2503646 0.2514604 0.1088359 0.1307759 0.1341931 0.1066727 
+[1] 127
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.05422166 0.09096155 0.09934697 0.05831697 0.08081387 0.09399845 0.22673279 
+ reg.sd.bs 
+0.08786579 
+[1] 128
+  |                                                                              |==================                                                    |  26%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.21936714 0.10668701 0.21268321 0.23412449 0.08766705 0.15502216 0.26288604 
+ reg.sd.bs 
+0.11723567 
+[1] 129
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1026269 0.1135505 0.2679037 0.2705298 0.2263330 0.2915224 0.3594253 0.1232120 
+[1] 130
+         reg       sd.reg          prp           dr    sd.dr.asp     sd.dr.bs 
+ 0.085233332  0.110047205 -0.005444171  0.012146815  0.089919092  0.101401806 
+   prp.sd.bs    reg.sd.bs 
+ 0.091497130  0.111508679 
+[1] 131
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4369066 0.1370001 0.8045049 0.7567481 0.2526111 0.3559848 0.6377952 0.1463888 
+[1] 132
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1171483 0.1159872 0.1220982 0.1181321 0.1459330 0.1917441 0.2162532 0.1316752 
+[1] 133
+  |                                                                              |===================                                                   |  27%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.12453517 0.10642234 0.05688324 0.07739455 0.09217706 0.12438038 0.10391517 
+ reg.sd.bs 
+0.11074240 
+[1] 134
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+0.094626479 0.106721296 0.013650303 0.008518367 0.101828468 0.128009979 
+  prp.sd.bs   reg.sd.bs 
+0.083176751 0.113198312 
+[1] 135
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.10425155 0.09686678 0.06617817 0.07444382 0.09413486 0.09558812 0.09541766 
+ reg.sd.bs 
+0.09510162 
+[1] 136
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2675551 0.1162977 0.2480606 0.2572601 0.1299928 0.1761969 0.1735880 0.1141559 
+[1] 137
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1040069 0.1075771 0.1219587 0.1206362 0.1333402 0.1669094 0.1593072 0.1315050 
+[1] 138
+  |                                                                              |===================                                                   |  28%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.13814760 0.11934745 0.02379510 0.15016512 0.08030745 0.12448539 0.10470467 
+ reg.sd.bs 
+0.11973027 
+[1] 139
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.08132452 0.10571661 0.17777070 0.17261178 0.18912851 0.27166486 0.28822918 
+ reg.sd.bs 
+0.11843357 
+[1] 140
+  |                                                                              |====================                                                  |  28%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1602690 0.1151698 0.1347991 0.1124032 0.1461158 0.2086152 0.2369061 0.1208350 
+[1] 141
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1184965 0.1433061 0.3817067 0.3595713 0.1981220 0.4147280 0.6394495 0.1480911 
+[1] 142
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1685502 0.1039078 0.2018763 0.2097409 0.1136914 0.1203224 0.1237500 0.1107402 
+[1] 143
+  |                                                                              |====================                                                  |  29%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.25453602 0.14096605 0.04886193 0.24292291 0.08422951 0.14942726 0.11269189 
+ reg.sd.bs 
+0.14634514 
+[1] 144
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.02055917  0.10627052  0.18236208  0.16781550  0.28769991  0.33024952 
+  prp.sd.bs   reg.sd.bs 
+ 0.33450972  0.11827733 
+[1] 145
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2363737 0.1183042 0.1748327 0.1624264 0.1185125 0.1676505 0.2525726 0.1234806 
+[1] 146
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.01927473  0.08425420 -0.06546597 -0.05559066  0.06921174  0.15049321 
+  prp.sd.bs   reg.sd.bs 
+ 0.07846410  0.09105861 
+[1] 147
+  |                                                                              |=====================                                                 |  29%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.14219034 0.11766021 0.05446497 0.05710920 0.08740212 0.13932934 0.18150063 
+ reg.sd.bs 
+0.12402958 
+[1] 148
+  |                                                                              |=====================                                                 |  30%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.10981730 0.11527921 0.05543084 0.08033765 0.09305216 0.11845789 0.11994396 
+ reg.sd.bs 
+0.11599593 
+[1] 149
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2117636 0.1071658 0.2111290 0.2048401 0.1072603 0.1208770 0.1191589 0.1129180 
+[1] 150
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1296844 0.1289324 0.1149113 0.1417306 0.1042556 0.1438666 0.1599262 0.1397488 
+[1] 151
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2874869 0.1225261 0.2652676 0.1924877 0.1481668 0.1997242 0.3142768 0.1185488 
+[1] 152
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.13876111 0.11870908 0.33995195 0.09185832 0.25792405 0.63385326 1.02163050 
+ reg.sd.bs 
+0.12447538 
+[1] 153
+  |                                                                              |=====================                                                 |  31%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.14660749 0.11875767 0.02831259 0.05461477 0.10151792 0.13391492 0.08816455 
+ reg.sd.bs 
+0.11428685 
+[1] 154
+  |                                                                              |======================                                                |  31%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4295623 0.1006600 0.4790583 0.4638393 0.1021350 0.1567652 0.2471823 0.1096231 
+[1] 155
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2219915 0.1347852 0.1800664 0.1839413 0.1582190 0.2872559 0.3537246 0.1495285 
+[1] 156
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1514015 0.1131674 0.1150460 0.1408206 0.1120241 0.1666341 0.1878642 0.1169100 
+[1] 157
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.19115100  0.11756484  0.05715901 -0.17687763  0.34329005  0.88274445 
+  prp.sd.bs   reg.sd.bs 
+ 0.05960306  0.13726503 
+[1] 158
+  |                                                                              |======================                                                |  32%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.07002968  0.08774482 -0.01123741 -0.01270441  0.12344095  0.14027081 
+  prp.sd.bs   reg.sd.bs 
+ 0.14249251  0.10168567 
+[1] 159
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.01570063  0.10277960 -0.08539322 -0.05286590  0.07773595  0.09363200 
+  prp.sd.bs   reg.sd.bs 
+ 0.07734688  0.09887338 
+[1] 160
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.12831875 0.12374084 0.07072500 0.09119382 0.14638386 0.19310959 0.15752413 
+ reg.sd.bs 
+0.12816527 
+[1] 161
+  |                                                                              |=======================                                               |  32%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.05818076 0.09215743 0.11509001 0.08934734 0.10906134 0.14151521 0.14791531 
+ reg.sd.bs 
+0.11334424 
+[1] 162
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2177740 0.1116983 0.2124143 0.2100978 0.1340116 0.2168310 0.1975314 0.1152302 
+[1] 163
+  |                                                                              |=======================                                               |  33%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.07382336 0.09174089 0.02516098 0.07042468 0.08593387 0.09471196 0.09471298 
+ reg.sd.bs 
+0.09176967 
+[1] 164
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4677911 0.1552945 0.6496382 0.6638496 0.2195406 0.3002624 0.3492637 0.1908100 
+[1] 165
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3842468 0.1100823 0.4662351 0.5001316 0.1637607 0.1770688 0.2338985 0.1199656 
+[1] 166
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1051388 0.1057854 0.1312018 0.0937887 0.1519361 0.2367567 0.3213235 0.1168295 
+[1] 167
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4064096 0.1063708 0.4716103 0.4327352 0.1358259 0.1613416 0.2429890 0.1061970 
+[1] 168
+  |                                                                              |========================                                              |  34%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1483724 0.1077427 0.2341778 0.2383158 0.1647859 0.2404321 0.2688496 0.1178128 
+[1] 169
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.25807516 0.10605385 0.20559831 0.19990570 0.09363467 0.10595600 0.12962789 
+ reg.sd.bs 
+0.10103394 
+[1] 170
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.03177892 0.11111176 0.03844439 0.02342563 0.12156808 0.15531321 0.16345352 
+ reg.sd.bs 
+0.11445891 
+[1] 171
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.22217795 0.11509241 0.16728878 0.03689814 0.30251154 0.43957290 0.25637394 
+ reg.sd.bs 
+0.13318257 
+[1] 172
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.32413497 0.11072397 0.22471622 0.20575234 0.11554977 0.12216350 0.09609557 
+ reg.sd.bs 
+0.10456560 
+[1] 173
+  |                                                                              |========================                                              |  35%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.16446034 0.09378142 0.11813251 0.11106812 0.09813997 0.14709944 0.09930422 
+ reg.sd.bs 
+0.11281439 
+[1] 174
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1717173 0.1051583 0.2037671 0.1874994 0.1537423 0.2512227 0.2852842 0.1087883 
+[1] 175
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4428582 0.1237300 0.5073876 0.5244859 0.1423473 0.2556495 0.2980910 0.1324491 
+[1] 176
+  |                                                                              |=========================                                             |  35%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4167344 0.1062143 0.3032972 0.3140095 0.1540240 0.3410243 0.2280906 0.1108882 
+[1] 177
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3830428 0.1197926 0.4118352 0.4026996 0.1449657 0.1668647 0.1886905 0.1258512 
+[1] 178
+  |                                                                              |=========================                                             |  36%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2992289 0.1223337 0.3350150 0.2727394 0.1541752 0.3438166 0.3092898 0.1272317 
+[1] 179
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4134051 0.1321354 0.4528408 0.4222079 0.2139483 0.3075522 0.4010712 0.1377470 
+[1] 180
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.09249945 0.10642405 0.13025117 0.12700795 0.12668157 0.15504075 0.18055024 
+ reg.sd.bs 
+0.11136675 
+[1] 181
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3868934 0.1307726 0.5996610 0.5657735 0.1942930 0.1770395 0.3361949 0.1417003 
+[1] 182
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1799704 0.1241575 0.2301305 0.1692605 0.1866321 0.3599721 0.6305088 0.1272149 
+[1] 183
+  |                                                                              |==========================                                            |  37%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2387068 0.1191278 0.2325880 0.2253316 0.1401785 0.1947667 0.2317830 0.1216149 
+[1] 184
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2196990 0.1243756 0.2551372 0.2560492 0.1429970 0.1776146 0.2018384 0.1267680 
+[1] 185
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.09243252 0.10109151 0.10301177 0.11054828 0.10741779 0.11940923 0.11980395 
+ reg.sd.bs 
+0.10916423 
+[1] 186
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.18775010 0.09790209 0.14159954 0.14596165 0.07840949 0.08253026 0.08031290 
+ reg.sd.bs 
+0.09573348 
+[1] 187
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2098907 0.1029675 0.1617950 0.1605850 0.1107555 0.1690309 0.1482072 0.1052870 
+[1] 188
+  |                                                                              |==========================                                            |  38%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.10841735 0.10423525 0.02841002 0.06316013 0.08437170 0.09301301 0.08184672 
+ reg.sd.bs 
+0.09959179 
+[1] 189
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2665522 0.1171187 0.2289559 0.2676808 0.1142375 0.1294749 0.1337740 0.1138830 
+[1] 190
+  |                                                                              |===========================                                           |  38%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.02241347  0.10320059 -0.05909536 -0.03925912  0.08099943  0.10039870 
+  prp.sd.bs   reg.sd.bs 
+ 0.08311348  0.09836475 
+[1] 191
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.43130949 0.09112417 0.40978306 0.43820266 0.09044631 0.10059967 0.09964621 
+ reg.sd.bs 
+0.09272120 
+[1] 192
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.5184709 0.1302050 0.4853392 0.5050770 0.0905804 0.1482240 0.2703567 0.1362697 
+[1] 193
+  |                                                                              |===========================                                           |  39%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.13738895 0.10400170 0.08118422 0.10058988 0.09302097 0.15738905 0.19309810 
+ reg.sd.bs 
+0.10786264 
+[1] 194
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1770200 0.1123629 0.1876507 0.1754055 0.1287848 0.1652798 0.1739542 0.1115996 
+[1] 195
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1678837 0.1093270 0.2590799 0.2551519 0.1357017 0.1495617 0.1695295 0.1149929 
+[1] 196
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1857145 0.1002478 0.1916885 0.1817002 0.1049124 0.1189123 0.1224751 0.1052499 
+[1] 197
+  |                                                                              |============================                                          |  39%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1583525 0.1126775 0.2824904 0.2772203 0.1878717 0.2443685 0.3161078 0.1213495 
+[1] 198
+  |                                                                              |============================                                          |  40%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2269624 0.1174172 0.3015542 0.3155865 0.1251617 0.1392247 0.1530623 0.1281452 
+[1] 199
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4818632 0.1418449 0.3826321 0.4149983 0.1379463 0.2148497 0.2577772 0.1484413 
+[1] 200
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.16969380 0.13280852 0.09138048 0.07094098 0.13657283 0.17124174 0.12420184 
+ reg.sd.bs 
+0.13573761 
+[1] 201
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4353019 0.1355733 1.5079309 1.0361972 0.4607488 0.7796758 1.6424150 0.1443257 
+[1] 202
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.13114977 0.10810203 0.05688060 0.02077454 0.12789692 0.24573299 0.11663270 
+ reg.sd.bs 
+0.11362125 
+[1] 203
+  |                                                                              |============================                                          |  41%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.24041462 0.13834606 0.11919804 0.08334072 0.22549483 0.24595197 0.25165058 
+ reg.sd.bs 
+0.13905070 
+[1] 204
+  |                                                                              |=============================                                         |  41%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.18322020 0.12359303 0.03477815 0.04102387 0.16226314 0.18182756 0.07509121 
+ reg.sd.bs 
+0.12417089 
+[1] 205
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3091311 0.1092561 0.2511267 0.2432399 0.1010018 0.1266427 0.1036956 0.1087454 
+[1] 206
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2284085 0.1167096 0.3098010 0.3301160 0.1463997 0.1650729 0.1694294 0.1308057 
+[1] 207
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1618216 0.1265716 0.3176626 0.3439527 0.2610740 0.2965906 0.3055976 0.1450055 
+[1] 208
+  |                                                                              |=============================                                         |  42%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3711549 0.1430459 1.1780550 0.8865750 0.4953615 0.3881762 0.8165493 0.1475039 
+[1] 209
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.20396073 0.10425765 0.14599533 0.15767490 0.08403683 0.09465304 0.09874096 
+ reg.sd.bs 
+0.09941887 
+[1] 210
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3244441 0.1383138 0.3175131 0.3676182 0.1507027 0.2521076 0.4491622 0.1413173 
+[1] 211
+  |                                                                              |==============================                                        |  42%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.12969261 0.11655981 0.05541149 0.04731444 0.14169766 0.22469303 0.12253126 
+ reg.sd.bs 
+0.12178956 
+[1] 212
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2577086 0.1152658 0.3423819 0.3437830 0.1716578 0.2292680 0.2614805 0.1292527 
+[1] 213
+  |                                                                              |==============================                                        |  43%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2016777 0.1002260 0.1969792 0.1977295 0.1111688 0.1136828 0.1129750 0.1047635 
+[1] 214
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2836914 0.1262852 0.3148904 0.2754439 0.1791485 0.2437506 0.2819955 0.1286317 
+[1] 215
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3195463 0.1139569 0.1708965 0.1873858 0.1475539 0.1525755 0.1066690 0.1140657 
+[1] 216
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.40583842 0.11896117 0.26445072 0.41807967 0.08481871 0.18756966 0.30171379 
+ reg.sd.bs 
+0.12140503 
+[1] 217
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1555437 0.1196310 0.1435651 0.1248988 0.1279016 0.2907909 0.2827353 0.1290139 
+[1] 218
+  |                                                                              |===============================                                       |  44%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.27450054 0.13540097 0.08990432 0.14967620 0.15222096 0.21036180 0.12360709 
+ reg.sd.bs 
+0.13390852 
+[1] 219
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1900790 0.1067043 0.1583347 0.1649772 0.1147580 0.1387890 0.1383627 0.1119261 
+[1] 220
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2773285 0.1246228 0.5752795 0.5876960 0.3513737 0.2813797 0.3593466 0.1383491 
+[1] 221
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2104292 0.1186870 0.3992230 0.3310175 0.2363980 0.7312033 0.3985907 0.1347491 
+[1] 222
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+ 0.1106614  0.1408052 -0.1165347 -1.1143647  1.2422610  1.3978601  0.1059967 
+ reg.sd.bs 
+ 0.1524272 
+[1] 223
+  |                                                                              |===============================                                       |  45%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.10835167 0.11422189 0.03968419 0.04643515 0.08633700 0.08805876 0.07595763 
+ reg.sd.bs 
+0.10429914 
+[1] 224
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.06290479 0.11588567 0.04235704 0.04014610 0.12160701 0.15415489 0.17009701 
+ reg.sd.bs 
+0.11326521 
+[1] 225
+  |                                                                              |================================                                      |  45%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.0778643 0.1207411 0.2367545 0.1934582 0.2678616 0.4678697 0.5640371 0.1329182 
+[1] 226
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.30153973 0.10320054 0.25912994 0.26554273 0.09250183 0.10530465 0.12388337 
+ reg.sd.bs 
+0.10014166 
+[1] 227
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2788262 0.1211804 0.2106839 0.1913971 0.1319728 0.1567211 0.1689863 0.1154437 
+[1] 228
+  |                                                                              |================================                                      |  46%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.18906865 0.09980508 0.21008514 0.21858848 0.12179733 0.15829013 0.14799432 
+ reg.sd.bs 
+0.11588626 
+[1] 229
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3619271 0.1213676 0.3887023 0.3951286 0.1301708 0.1478781 0.1880123 0.1237041 
+[1] 230
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1317763 0.1004680 0.1677383 0.1759227 0.1269591 0.1737679 0.1606714 0.1136352 
+[1] 231
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2982718 0.1308254 0.2416308 0.2758176 0.2028314 0.2982845 0.3312767 0.1356985 
+[1] 232
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2644011 0.1149856 0.3208292 0.3171587 0.1373738 0.1624912 0.1956433 0.1224242 
+[1] 233
+  |                                                                              |=================================                                     |  47%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3719682 0.1366664 0.2577527 0.1164857 0.2927027 0.4473976 0.1907628 0.1328314 
+[1] 234
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3248415 0.1262316 0.3189322 0.3063294 0.1737373 0.2253924 0.2679725 0.1274679 
+[1] 235
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3435538 0.1290117 0.3531123 0.3814895 0.1620505 0.2048828 0.2535215 0.1371574 
+[1] 236
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2249365 0.1260250 0.3989547 0.3849181 0.1965925 0.2510627 0.3169797 0.1340675 
+[1] 237
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1653169 0.1205854 0.3283610 0.3134486 0.2473930 0.3440458 0.4364829 0.1288128 
+[1] 238
+  |                                                                              |=================================                                     |  48%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2459325 0.1195397 0.3279822 0.3550412 0.1732729 0.2292570 0.3271055 0.1260199 
+[1] 239
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1921506 0.1150358 0.2325363 0.1998956 0.1289905 0.3556021 1.1999593 0.1191969 
+[1] 240
+  |                                                                              |==================================                                    |  48%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.05720247  0.09736995 -0.08547142 -0.06930850  0.08822398  0.10304252 
+  prp.sd.bs   reg.sd.bs 
+ 0.11077079  0.10147502 
+[1] 241
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3961534 0.1243116 0.3498285 0.2738255 0.1953101 0.3071430 0.2254014 0.1288240 
+[1] 242
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.08052440  0.08637519 -0.10829447 -0.10798496  0.07726077  0.09378955 
+  prp.sd.bs   reg.sd.bs 
+ 0.08943514  0.09155787 
+[1] 243
+  |                                                                              |==================================                                    |  49%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2691757 0.1303177 0.2581145 0.2249704 0.1768202 0.2613659 0.3071855 0.1267105 
+[1] 244
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1731780 0.1263807 0.1410065 0.1957490 0.1384783 0.2317422 0.3078555 0.1303876 
+[1] 245
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3897254 0.1262171 0.2429182 0.2324723 0.1502541 0.1818241 0.1419088 0.1244029 
+[1] 246
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4259582 0.1094871 0.4534624 0.4654868 0.1247022 0.1391280 0.1892342 0.1222010 
+[1] 247
+  |                                                                              |===================================                                   |  49%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.09591452 0.10124621 0.06275487 0.04173438 0.08851560 0.11655199 0.13829126 
+ reg.sd.bs 
+0.09823197 
+[1] 248
+  |                                                                              |===================================                                   |  50%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.29868955 0.13024390 0.09715305 0.11742869 0.20505237 0.17013827 0.07600911 
+ reg.sd.bs 
+0.13254158 
+[1] 249
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1725629 0.1094117 0.2094387 0.1963165 0.1076922 0.1194514 0.1398555 0.1097859 
+[1] 250
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.14186420 0.10962838 0.09868823 0.11188411 0.11497482 0.13921605 0.13342633 
+ reg.sd.bs 
+0.11797949 
+[1] 251
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4852993 0.1267281 0.4237153 0.3730535 0.2013359 0.2880883 0.4085777 0.1353156 
+[1] 252
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.02105508  0.10960652 -0.06895977 -0.09945069  0.12510388  0.17931471 
+  prp.sd.bs   reg.sd.bs 
+ 0.08296137  0.11262944 
+[1] 253
+  |                                                                              |===================================                                   |  51%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1648370 0.1176891 0.3844672 0.3631706 0.2090026 0.2687445 0.3248074 0.1300160 
+[1] 254
+  |                                                                              |====================================                                  |  51%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4643225 0.1171016 0.5046362 0.4913469 0.1411593 0.1764549 0.2167467 0.1282873 
+[1] 255
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.08400042 0.11324574 0.11310012 0.11735082 0.15551046 0.25842928 0.28273381 
+ reg.sd.bs 
+0.11705965 
+[1] 256
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3075138 0.1114566 0.2584060 0.2547200 0.1202474 0.1400863 0.1305290 0.1107959 
+[1] 257
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2855575 0.1228519 0.3470014 0.3697526 0.1383261 0.1902496 0.3007225 0.1227536 
+[1] 258
+  |                                                                              |====================================                                  |  52%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.10649743  0.11784161 -0.02361778 -0.01429534  0.10325569  0.11551436 
+  prp.sd.bs   reg.sd.bs 
+ 0.06810405  0.11912990 
+[1] 259
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2755366 0.1156907 0.1982071 0.2586176 0.1335179 0.1923236 0.2185930 0.1184047 
+[1] 260
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2044414 0.1126169 0.1142509 0.1732212 0.1108275 0.1679447 0.1152568 0.1254500 
+[1] 261
+  |                                                                              |=====================================                                 |  52%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.14496740 0.11971792 0.05633625 0.05506760 0.10905959 0.13401054 0.12525383 
+ reg.sd.bs 
+0.12288581 
+[1] 262
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.08421427 0.11202876 0.17259494 0.16813498 0.14773370 0.27875974 0.38846152 
+ reg.sd.bs 
+0.11919291 
+[1] 263
+  |                                                                              |=====================================                                 |  53%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2867008 0.1076253 0.2971326 0.2903170 0.1267396 0.1468415 0.1461715 0.1200127 
+[1] 264
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2169147 0.1279569 0.1831350 0.1281865 0.1459304 0.3173664 0.3537133 0.1334559 
+[1] 265
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.28473659  0.12230094  0.06785513 -0.04161937  0.24024954  0.32313809 
+  prp.sd.bs   reg.sd.bs 
+ 0.08575903  0.12134247 
+[1] 266
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2583622 0.1191821 0.3314415 0.3465452 0.1424967 0.1494126 0.1643146 0.1286673 
+[1] 267
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.15805016 0.11319597 0.08342908 0.09247406 0.10687948 0.13300179 0.09712700 
+ reg.sd.bs 
+0.10437141 
+[1] 268
+  |                                                                              |======================================                                |  54%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.12786965  0.11890688 -0.02049773 -0.10532237  0.16888882  0.33373843 
+  prp.sd.bs   reg.sd.bs 
+ 0.07378458  0.12057834 
+[1] 269
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2204587 0.1123111 0.2804060 0.2819298 0.1224043 0.1368578 0.1410282 0.1207064 
+[1] 270
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1236229 0.1010369 0.1320145 0.1254427 0.1036913 0.1137832 0.1296650 0.1028052 
+[1] 271
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1589448 0.1113888 0.1925302 0.1793729 0.2109732 0.3196022 0.3619668 0.1168497 
+[1] 272
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.04315761 0.10056152 0.02730264 0.02721559 0.07976962 0.20198259 0.36019431 
+ reg.sd.bs 
+0.10119507 
+[1] 273
+  |                                                                              |======================================                                |  55%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.09833759 0.10105053 0.04886170 0.04074906 0.09744244 0.10436029 0.10142357 
+ reg.sd.bs 
+0.10254069 
+[1] 274
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.13177923  0.10772983  0.02372259 -0.01135330  0.13687007  0.21972775 
+  prp.sd.bs   reg.sd.bs 
+ 0.08691279  0.11232182 
+[1] 275
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2396757 0.1128572 0.1641912 0.1617578 0.1177640 0.1404553 0.1343503 0.1131101 
+[1] 276
+  |                                                                              |=======================================                               |  55%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2308059 0.1002655 0.2212145 0.2209675 0.1008240 0.1096010 0.1097866 0.1054408 
+[1] 277
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.37978261 0.11497484 0.31211599 0.30624754 0.09972041 0.10467549 0.13136607 
+ reg.sd.bs 
+0.11432300 
+[1] 278
+  |                                                                              |=======================================                               |  56%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.33656462 0.11927121 0.19875670 0.19318259 0.13211192 0.15909862 0.08450468 
+ reg.sd.bs 
+0.12450638 
+[1] 279
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1473603 0.1038310 0.2708304 0.2783372 0.1623303 0.2572759 0.3818016 0.1155080 
+[1] 280
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.03129462  0.11572182 -0.10903879 -0.07194779  0.08939092  0.29676957 
+  prp.sd.bs   reg.sd.bs 
+ 0.07319280  0.12095204 
+[1] 281
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.05962570  0.10987367 -0.02514385 -0.03554264  0.12599127  0.34722199 
+  prp.sd.bs   reg.sd.bs 
+ 0.09360680  0.12197601 
+[1] 282
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2067516 0.1230608 0.2099088 0.1617139 0.1439951 0.1784771 0.1976784 0.1286207 
+[1] 283
+  |                                                                              |========================================                              |  57%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.12479602 0.09713846 0.21804292 0.17591465 0.14415045 0.26612181 0.35188021 
+ reg.sd.bs 
+0.11532142 
+[1] 284
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2392423 0.1200649 0.1451583 0.1205619 0.1457253 0.1702255 0.1075281 0.1290342 
+[1] 285
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.14160427 0.11592465 0.16265448 0.09526562 0.14207271 0.18835076 0.23302097 
+ reg.sd.bs 
+0.12216313 
+[1] 286
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1547731 0.1247550 0.1885668 0.1537368 0.1645152 0.2433559 0.2492471 0.1324558 
+[1] 287
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.21299941 0.11614306 0.08971166 0.10785363 0.10289297 0.32943760 0.09112222 
+ reg.sd.bs 
+0.11813105 
+[1] 288
+  |                                                                              |========================================                              |  58%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1960265 0.1144184 0.2708572 0.2125161 0.1369706 0.3139642 0.6322529 0.1246255 
+[1] 289
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3328070 0.1168547 0.3172405 0.3391309 0.1116897 0.1366944 0.1522771 0.1196987 
+[1] 290
+  |                                                                              |=========================================                             |  58%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2687510 0.1422532 0.2099412 0.2890364 0.0982326 0.2294487 0.1854927 0.1574898 
+[1] 291
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1799426 0.1316441 0.2084104 0.1792135 0.2030138 0.6004597 0.8713996 0.1303810 
+[1] 292
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.16589507 0.09898079 0.17537651 0.20588199 0.10097897 0.14252928 0.14078970 
+ reg.sd.bs 
+0.10008586 
+[1] 293
+  |                                                                              |=========================================                             |  59%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.05719572 0.12151219 0.27970049 0.10456767 0.16611020 0.36800282 1.04719296 
+ reg.sd.bs 
+0.12325282 
+[1] 294
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4098846 0.1292724 0.3179186 0.2325576 0.2255573 0.4832610 0.4380033 0.1314903 
+[1] 295
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.04640625  0.10329924 -0.03266766 -0.01740887  0.08388761  0.09498809 
+  prp.sd.bs   reg.sd.bs 
+ 0.07214123  0.09962539 
+[1] 296
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2265467 0.1134903 0.2721103 0.2806761 0.1458234 0.2310492 0.2820252 0.1222686 
+[1] 297
+  |                                                                              |==========================================                            |  59%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.09093222 0.08060593 0.17029465 0.14502457 0.11382764 0.12292575 0.14819811 
+ reg.sd.bs 
+0.08974886 
+[1] 298
+  |                                                                              |==========================================                            |  60%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2670487 0.1188121 0.3291128 0.3355979 0.1395191 0.1829923 0.2579895 0.1227522 
+[1] 299
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.05812258 0.10146057 0.11052544 0.10107539 0.14706270 0.19274752 0.20655827 
+ reg.sd.bs 
+0.10921665 
+[1] 300
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1869453 0.1107271 0.1490059 0.1826792 0.1167318 0.2186745 0.2565975 0.1131265 
+[1] 301
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3111524 0.1162123 0.2483388 0.2550004 0.1204453 0.1337274 0.1414721 0.1151302 
+[1] 302
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.13447940 0.10689486 0.13255409 0.11081719 0.09535903 0.13238847 0.14346627 
+ reg.sd.bs 
+0.10678668 
+[1] 303
+  |                                                                              |==========================================                            |  61%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.38034925 0.11525926 0.24617573 0.31411799 0.11369620 0.12934682 0.09792756 
+ reg.sd.bs 
+0.11184637 
+[1] 304
+  |                                                                              |===========================================                           |  61%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.10112668 0.10375004 0.06774489 0.08107044 0.09240965 0.10893312 0.11609140 
+ reg.sd.bs 
+0.10138287 
+[1] 305
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4194647 0.1262061 0.4341377 0.4291990 0.1515558 0.2207318 0.2186257 0.1398652 
+[1] 306
+          reg        sd.reg           prp            dr     sd.dr.asp 
+-0.0103709428  0.0978550953  0.0002765077 -0.0008314212  0.1145361501 
+     sd.dr.bs     prp.sd.bs     reg.sd.bs 
+ 0.1411912209  0.1445590598  0.1060305482 
+[1] 307
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2359091 0.1219363 0.4726988 0.4738726 0.2292614 0.3099539 0.3797704 0.1360463 
+[1] 308
+  |                                                                              |===========================================                           |  62%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4557875 0.1129460 0.5783169 0.5901113 0.1490160 0.1339128 0.3497962 0.1143590 
+[1] 309
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2205134 0.1249440 0.5773010 0.5833971 0.3543683 0.3392511 0.4591069 0.1321086 
+[1] 310
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.02242086  0.08848547  0.43930432  0.45217201  0.51142872  0.37221384 
+  prp.sd.bs   reg.sd.bs 
+ 0.39479479  0.10512333 
+[1] 311
+  |                                                                              |============================================                          |  62%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1900446 0.1197250 0.1687277 0.1725643 0.1118053 0.3824814 0.6355903 0.1217565 
+[1] 312
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3109608 0.1110723 0.2969367 0.3062479 0.1085383 0.1331506 0.1508794 0.1174633 
+[1] 313
+  |                                                                              |============================================                          |  63%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4181780 0.1284152 0.4392697 0.3885513 0.1679721 0.2523227 0.3131331 0.1311529 
+[1] 314
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1336220 0.1054549 0.1954141 0.1744716 0.1626461 0.2153839 0.4251790 0.1190233 
+[1] 315
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2129522 0.1219907 0.1890542 0.2032654 0.1483023 0.2222581 0.2317428 0.1235036 
+[1] 316
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.14320191 0.11879229 0.09954010 0.09409705 0.11026440 0.15477222 0.20157540 
+ reg.sd.bs 
+0.11484435 
+[1] 317
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.07271780  0.08842802 -0.07719541 -0.07689482  0.08976053  0.10232345 
+  prp.sd.bs   reg.sd.bs 
+ 0.09859484  0.09190647 
+[1] 318
+  |                                                                              |=============================================                         |  64%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2197801 0.1171452 0.2412397 0.2363652 0.1323517 0.1926173 0.2528506 0.1142924 
+[1] 319
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2272077 0.1053792 0.1860829 0.1801924 0.1022325 0.1263035 0.1295886 0.1067778 
+[1] 320
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+0.019671705 0.083634393 0.005868437 0.006321488 0.068021839 0.081319562 
+  prp.sd.bs   reg.sd.bs 
+0.085899969 0.084734007 
+[1] 321
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1585228 0.1222753 0.1661468 0.1800117 0.1330042 0.1683243 0.1883642 0.1252213 
+[1] 322
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.02184749  0.08472831 -0.02837721 -0.02272175  0.06909241  0.08029564 
+  prp.sd.bs   reg.sd.bs 
+ 0.06349336  0.08247685 
+[1] 323
+  |                                                                              |=============================================                         |  65%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.06535832 0.09580891 0.11315708 0.12042148 0.13629560 0.15893671 0.15837373 
+ reg.sd.bs 
+0.10623648 
+[1] 324
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.07553167 0.10141604 0.08208273 0.08081022 0.10746035 0.12039513 0.12630503 
+ reg.sd.bs 
+0.10542508 
+[1] 325
+  |                                                                              |==============================================                        |  65%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.04508886  0.09631694 -0.01295092 -0.00873125  0.07861940  0.09243070 
+  prp.sd.bs   reg.sd.bs 
+ 0.07551110  0.09711231 
+[1] 326
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.08064472  0.09318568 -0.13654328 -0.12123393  0.06727520  0.09036607 
+  prp.sd.bs   reg.sd.bs 
+ 0.06569018  0.09250737 
+[1] 327
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.33293807 0.10566635 0.42111737 0.34177989 0.09800952 0.13216733 0.39368485 
+ reg.sd.bs 
+0.10550807 
+[1] 328
+  |                                                                              |==============================================                        |  66%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1360101 0.1297451 0.1700102 0.1641187 0.1181029 0.1631365 0.2228404 0.1346779 
+[1] 329
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.18777102 0.09206967 0.11351198 0.12704795 0.07512728 0.08106837 0.07311948 
+ reg.sd.bs 
+0.08604499 
+[1] 330
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4976430 0.1198947 0.5303126 0.5484036 0.1597967 0.2320973 0.3528142 0.1227707 
+[1] 331
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1991222 0.1198752 0.2315936 0.2520226 0.1465451 0.1800977 0.1916234 0.1304513 
+[1] 332
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.11328866 0.10360592 0.10896206 0.09597048 0.11100820 0.16748715 0.14662467 
+ reg.sd.bs 
+0.10561711 
+[1] 333
+  |                                                                              |===============================================                       |  67%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.10122253 0.10932484 0.09691034 0.10620225 0.12187334 0.14041285 0.14105576 
+ reg.sd.bs 
+0.11487828 
+[1] 334
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.09329574 0.08703387 0.09688375 0.09388492 0.08772878 0.10590959 0.11852886 
+ reg.sd.bs 
+0.09222133 
+[1] 335
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2309170 0.1105647 0.1947885 0.1958284 0.1046187 0.2173011 0.4859046 0.1133224 
+[1] 336
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.27929344 0.11498150 0.13548698 0.14040900 0.11559065 0.18301030 0.06723513 
+ reg.sd.bs 
+0.11574789 
+[1] 337
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2638336 0.1147594 0.2586594 0.2380929 0.1310084 0.1466594 0.1616461 0.1166152 
+[1] 338
+  |                                                                              |===============================================                       |  68%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1322188 0.1272028 0.1690906 0.1079358 0.2127099 0.2953334 0.3310888 0.1299519 
+[1] 339
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.08253638 0.11921138 1.32377803 0.93142660 0.88927928 1.01497250 1.58739579 
+ reg.sd.bs 
+0.12935058 
+[1] 340
+  |                                                                              |================================================                      |  68%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1602883 0.1023019 0.2552860 0.2459880 0.1678089 0.2757939 0.2708856 0.1189841 
+[1] 341
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3317659 0.1227526 0.3425056 0.3397319 0.1262717 0.1597336 0.1804453 0.1282581 
+[1] 342
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3633606 0.1105054 0.6564671 0.5503056 0.1451832 0.2822562 0.5013018 0.1195370 
+[1] 343
+  |                                                                              |================================================                      |  69%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.03887692 0.10874193 0.07681580 0.06444261 0.16544818 0.20206118 0.19307082 
+ reg.sd.bs 
+0.13493565 
+[1] 344
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1938850 0.1178221 0.4050442 0.3821139 0.1746101 0.2075989 0.3061574 0.1205328 
+[1] 345
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.03243541  0.09918373 -0.10196655 -0.10741777  0.08865233  0.09540789 
+  prp.sd.bs   reg.sd.bs 
+ 0.07445703  0.09819768 
+[1] 346
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1314761 0.1222050 0.2228001 0.2087466 0.1529543 0.2110497 0.3158727 0.1285833 
+[1] 347
+  |                                                                              |=================================================                     |  69%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2106467 0.1294533 0.1731417 0.1813797 0.1516030 0.2249067 0.2990125 0.1382176 
+[1] 348
+  |                                                                              |=================================================                     |  70%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2227977 0.1232873 0.1866332 0.2042129 0.1240060 0.1687529 0.1740754 0.1335208 
+[1] 349
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3513362 0.1117735 0.3495047 0.3551564 0.1263872 0.1391330 0.1524286 0.1163623 
+[1] 350
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.05400063 0.11050315 0.07572653 0.06175194 0.10363925 0.13179972 0.17955829 
+ reg.sd.bs 
+0.10521801 
+[1] 351
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2483224 0.1041378 0.2137004 0.2022358 0.1011754 0.1200244 0.1384559 0.1036365 
+[1] 352
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.08693480 0.07837537 0.06270421 0.06705796 0.07066045 0.07936896 0.07831929 
+ reg.sd.bs 
+0.07841578 
+[1] 353
+  |                                                                              |=================================================                     |  71%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3540767 0.1262252 0.2351440 0.2239550 0.1534734 0.2215502 0.2618377 0.1236059 
+[1] 354
+  |                                                                              |==================================================                    |  71%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2138183 0.1235467 0.1586058 0.1727427 0.1154660 0.2787801 0.2152595 0.1310870 
+[1] 355
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.22142560 0.09447186 0.21343497 0.22127055 0.07448172 0.09952611 0.10064245 
+ reg.sd.bs 
+0.09676200 
+[1] 356
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.08183259 0.09930287 0.28977884 0.22896476 0.17155781 0.21284931 0.35845174 
+ reg.sd.bs 
+0.10779796 
+[1] 357
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1404959 0.1114228 0.1650885 0.1378702 0.1538488 0.2158492 0.2556415 0.1214568 
+[1] 358
+  |                                                                              |==================================================                    |  72%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3780995 0.1051908 0.3524303 0.3543699 0.1077915 0.1303655 0.1642472 0.1100497 
+[1] 359
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.05128558 0.09908855 0.04740453 0.07138645 0.10569353 0.16007293 0.15956461 
+ reg.sd.bs 
+0.10948234 
+[1] 360
+         reg       sd.reg          prp           dr    sd.dr.asp     sd.dr.bs 
+ 0.013605788  0.093156426 -0.040922359 -0.002190998  0.072653436  0.092565768 
+   prp.sd.bs    reg.sd.bs 
+ 0.071308849  0.097124427 
+[1] 361
+  |                                                                              |===================================================                   |  72%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3183913 0.1271498 0.1313998 0.1687674 0.1436245 0.2406294 0.1282055 0.1226220 
+[1] 362
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1629157 0.1173479 0.1256551 0.1559982 0.1244647 0.1577192 0.1736275 0.1150237 
+[1] 363
+  |                                                                              |===================================================                   |  73%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2698185 0.1076420 0.2797278 0.2637505 0.1128244 0.1272942 0.1462069 0.1089967 
+[1] 364
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.02747452  0.10354321 -0.08550368 -0.07051621  0.08250929  0.10931780 
+  prp.sd.bs   reg.sd.bs 
+ 0.10783261  0.11090434 
+[1] 365
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.05794266 0.10058776 0.04849353 0.04180353 0.09788570 0.10899453 0.10905831 
+ reg.sd.bs 
+0.10135906 
+[1] 366
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.23638356 0.13020150 0.01694363 0.04186470 0.14772274 0.55217374 0.06889483 
+ reg.sd.bs 
+0.13435923 
+[1] 367
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+0.048913623 0.134336798 0.009992668 0.025135389 0.111840803 0.137327880 
+  prp.sd.bs   reg.sd.bs 
+0.126676171 0.132393350 
+[1] 368
+  |                                                                              |====================================================                  |  74%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+0.074030893 0.108041736 0.020671083 0.006776169 0.098875181 0.111137330 
+  prp.sd.bs   reg.sd.bs 
+0.094005812 0.110013605 
+[1] 369
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.29038758 0.13638513 0.13564078 0.11271059 0.17426346 0.23523997 0.08853585 
+ reg.sd.bs 
+0.13645252 
+[1] 370
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.04678214  0.11817430 -0.06060710 -0.05039163  0.10811518  0.13571208 
+  prp.sd.bs   reg.sd.bs 
+ 0.09907153  0.12119086 
+[1] 371
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2943651 0.1105573 0.3341586 0.3365169 0.1258705 0.1461415 0.1790646 0.1226837 
+[1] 372
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2365619 0.1148070 0.2971872 0.2827842 0.1426918 0.1815248 0.2144475 0.1231970 
+[1] 373
+  |                                                                              |====================================================                  |  75%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.22945002 0.12497793 0.07329248 0.10662806 0.12126374 0.16639085 0.10479517 
+ reg.sd.bs 
+0.12215798 
+[1] 374
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2959587 0.1205158 0.3821015 0.3046004 0.2498430 0.4277615 0.5185988 0.1210190 
+[1] 375
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1182656 0.1107752 0.2525577 0.2330385 0.2412516 0.4611813 0.4551012 0.1220964 
+[1] 376
+  |                                                                              |=====================================================                 |  75%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1554048 0.1206366 0.4255385 0.4247024 0.2369515 0.2938354 0.3780737 0.1296044 
+[1] 377
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.23980394 0.11326708 0.16014094 0.15412253 0.11035055 0.12620148 0.09927091 
+ reg.sd.bs 
+0.11066334 
+[1] 378
+  |                                                                              |=====================================================                 |  76%         reg       sd.reg          prp           dr    sd.dr.asp     sd.dr.bs 
+ 0.002326238  0.096324274 -0.033511279 -0.019976562  0.079737741  0.097591870 
+   prp.sd.bs    reg.sd.bs 
+ 0.099898722  0.099167864 
+[1] 379
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.09131944 0.10798305 0.12133201 0.11791017 0.12053085 0.15114474 0.18115630 
+ reg.sd.bs 
+0.11522014 
+[1] 380
+         reg       sd.reg          prp           dr    sd.dr.asp     sd.dr.bs 
+ 0.082152401  0.099755608 -0.031137274 -0.005956124  0.076380720  0.113462874 
+   prp.sd.bs    reg.sd.bs 
+ 0.059256898  0.100509447 
+[1] 381
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.06908298 0.10414229 0.24610556 0.23467032 0.22834118 0.34417011 0.40358988 
+ reg.sd.bs 
+0.11590974 
+[1] 382
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2872627 0.1216701 0.2981412 0.3055969 0.1286068 0.1505078 0.1590864 0.1267278 
+[1] 383
+  |                                                                              |======================================================                |  77%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.11549203  0.12617323 -0.02541204 -0.06372220  0.17354011  0.22829193 
+  prp.sd.bs   reg.sd.bs 
+ 0.07902741  0.12592467 
+[1] 384
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.12023197 0.12355821 0.05803475 0.04513268 0.11146559 0.15997251 0.17468956 
+ reg.sd.bs 
+0.12054275 
+[1] 385
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1767383 0.1153073 0.2467373 0.2514966 0.1519237 0.1869736 0.2053912 0.1293364 
+[1] 386
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2239305 0.1173639 0.3717933 0.2838603 0.2093591 0.2880164 0.3295417 0.1256929 
+[1] 387
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2425649 0.1339283 0.2143919 0.1863622 0.2291733 0.4139994 0.4309777 0.1361791 
+[1] 388
+  |                                                                              |======================================================                |  78%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2659922 0.1164727 0.2569016 0.2248254 0.1517091 0.2661556 0.1715396 0.1199329 
+[1] 389
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+0.163241480 0.147006059 0.002097569 0.135644789 0.077953209 0.149821065 
+  prp.sd.bs   reg.sd.bs 
+0.072019689 0.149523075 
+[1] 390
+  |                                                                              |=======================================================               |  78%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.17755812 0.13255114 0.04590935 0.06305780 0.17555333 0.22423121 0.19134894 
+ reg.sd.bs 
+0.13851657 
+[1] 391
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2905405 0.1180941 0.2912960 0.2978824 0.1271545 0.1715294 0.1913384 0.1330321 
+[1] 392
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2453121 0.1055500 0.3049181 0.3310935 0.1954635 0.2497334 0.2952449 0.1187734 
+[1] 393
+  |                                                                              |=======================================================               |  79%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2667682 0.1361740 0.1221624 0.1098352 0.1685000 0.2399802 0.2420447 0.1354491 
+[1] 394
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2862768 0.1217912 0.3519733 0.3543857 0.1669444 0.2531677 0.3270598 0.1239467 
+[1] 395
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.19286062 0.11822934 0.09025503 0.09071772 0.12563834 0.23331587 0.23370033 
+ reg.sd.bs 
+0.11595092 
+[1] 396
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4985991 0.1332050 0.4668026 0.4681579 0.1902732 0.3533122 0.3339485 0.1457732 
+[1] 397
+  |                                                                              |========================================================              |  79%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.5616872 0.1078180 0.7578619 0.6873856 0.1114391 0.1096879 0.2593232 0.1058236 
+[1] 398
+  |                                                                              |========================================================              |  80%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1199644 0.1080650 0.1520345 0.1484726 0.1062625 0.1161959 0.1335871 0.1109267 
+[1] 399
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2827416 0.1078705 0.2267542 0.2157532 0.1226212 0.1792510 0.1259746 0.1087760 
+[1] 400
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3497740 0.1063473 0.3829449 0.3777165 0.1515205 0.1818759 0.1814734 0.1221179 
+[1] 401
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3061412 0.1378324 0.3339089 0.3656840 0.1351934 0.3346829 0.4000728 0.1490365 
+[1] 402
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2342407 0.1118688 0.1888342 0.1942710 0.1182564 0.1341916 0.1457595 0.1128055 
+[1] 403
+  |                                                                              |========================================================              |  81%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1910288 0.1140892 0.3408219 0.2855537 0.1671336 0.2620990 0.3626513 0.1206313 
+[1] 404
+  |                                                                              |=========================================================             |  81%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1349279 0.1168444 0.1276857 0.1479055 0.1109779 0.1558184 0.2073505 0.1216965 
+[1] 405
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3382301 0.1102979 0.3504649 0.3433628 0.1219674 0.1417035 0.1499886 0.1163492 
+[1] 406
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.24416887 0.12916833 0.10541535 0.02495981 0.19188184 0.34726304 0.07180187 
+ reg.sd.bs 
+0.13104992 
+[1] 407
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2123464 0.1305770 0.1609537 0.2543672 0.1186085 0.1897961 0.1718163 0.1385882 
+[1] 408
+  |                                                                              |=========================================================             |  82%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2291068 0.1241348 0.2913752 0.2367730 0.2602283 0.3806088 0.3677389 0.1366223 
+[1] 409
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3822363 0.1271100 0.6438449 0.5831317 0.1920570 0.2561253 0.4313272 0.1310375 
+[1] 410
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1924817 0.1161174 0.1662141 0.1559330 0.1502812 0.2241780 0.1879317 0.1216955 
+[1] 411
+  |                                                                              |==========================================================            |  82%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2946540 0.1266516 0.5770786 0.5935739 0.2416369 0.2771332 0.3476938 0.1484348 
+[1] 412
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4211722 0.1067338 0.4664318 0.4399189 0.1290694 0.1565927 0.1924519 0.1134550 
+[1] 413
+  |                                                                              |==========================================================            |  83%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1328506 0.1174203 0.3236498 0.3258946 0.2542784 0.5058839 0.5775021 0.1244914 
+[1] 414
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.22759344 0.13131918 0.08768219 0.07456906 0.15435654 0.17642473 0.10287481 
+ reg.sd.bs 
+0.13591462 
+[1] 415
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.18217774 0.10623273 0.10532146 0.10156413 0.09679301 0.10648285 0.08418285 
+ reg.sd.bs 
+0.10071072 
+[1] 416
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3003582 0.1343302 0.4318723 0.3753015 0.1717272 0.2331800 0.3735933 0.1428124 
+[1] 417
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.02601896  0.10896833 -0.05991676 -0.05718549  0.09428248  0.10962375 
+  prp.sd.bs   reg.sd.bs 
+ 0.07832830  0.11273291 
+[1] 418
+  |                                                                              |===========================================================           |  84%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3560985 0.1191165 0.3461328 0.3243272 0.1153400 0.1641754 0.2458997 0.1186452 
+[1] 419
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2338521 0.1270367 0.1887570 0.1986309 0.1699408 0.2388828 0.2619549 0.1275824 
+[1] 420
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.56908779 0.09136585 0.57858041 0.51791446 0.13471692 0.21572751 0.25820677 
+ reg.sd.bs 
+0.10268388 
+[1] 421
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3118612 0.1162758 0.3049207 0.2984071 0.1321016 0.1532452 0.1553526 0.1221701 
+[1] 422
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.06507275 0.09107516 0.05730499 0.06034145 0.10550796 0.11861562 0.11372983 
+ reg.sd.bs 
+0.10021929 
+[1] 423
+  |                                                                              |===========================================================           |  85%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.07322094  0.10172922 -0.01381954 -0.01571628  0.09437018  0.12233818 
+  prp.sd.bs   reg.sd.bs 
+ 0.07037093  0.10113349 
+[1] 424
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1990759 0.1156998 0.2260835 0.2033106 0.1718210 0.2435347 0.2234044 0.1252834 
+[1] 425
+  |                                                                              |============================================================          |  85%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3451376 0.1129566 0.3587191 0.3802880 0.1649321 0.2152672 0.2485104 0.1184685 
+[1] 426
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3203138 0.1182609 0.3077197 0.3409013 0.1176282 0.1403601 0.1547066 0.1207278 
+[1] 427
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+-0.01377154  0.09561719 -0.06538969 -0.06239328  0.07911060  0.09890490 
+  prp.sd.bs   reg.sd.bs 
+ 0.07925003  0.09378010 
+[1] 428
+  |                                                                              |============================================================          |  86%         reg       sd.reg          prp           dr    sd.dr.asp     sd.dr.bs 
+ 0.050374401  0.097962566  0.010537856 -0.004544495  0.080733918  0.089368422 
+   prp.sd.bs    reg.sd.bs 
+ 0.079786478  0.098076902 
+[1] 429
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1591777 0.1139571 0.1447246 0.1453588 0.1162952 0.1414435 0.1469489 0.1243926 
+[1] 430
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2856252 0.1020979 0.2684986 0.2660815 0.1051365 0.1124906 0.1163737 0.1037458 
+[1] 431
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.07345805 0.08843907 0.03736776 0.03071978 0.08397054 0.08616154 0.08329766 
+ reg.sd.bs 
+0.09068991 
+[1] 432
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.08314579 0.10678889 0.20725582 0.22035819 0.19584883 0.25915316 0.28136709 
+ reg.sd.bs 
+0.12026573 
+[1] 433
+  |                                                                              |=============================================================         |  87%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3747016 0.1210676 0.3821049 0.3662968 0.1532065 0.2921616 0.4291492 0.1243796 
+[1] 434
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1352903 0.1216385 0.2216926 0.2543710 0.2022965 0.3056953 0.4054454 0.1302688 
+[1] 435
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3770205 0.1106044 0.3726896 0.4035258 0.1293242 0.1609158 0.1791603 0.1108179 
+[1] 436
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4524074 0.1135398 0.5209420 0.5128291 0.1188615 0.1909187 0.3266568 0.1251954 
+[1] 437
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3790091 0.1131792 0.3339173 0.3306028 0.1272054 0.1425688 0.1582740 0.1192493 
+[1] 438
+  |                                                                              |=============================================================         |  88%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.11316575 0.11265262 0.03460464 0.04364828 0.09463245 0.12061828 0.09708690 
+ reg.sd.bs 
+0.11211023 
+[1] 439
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2513005 0.1311766 0.4041523 0.3758855 0.2090146 0.3033726 0.3985939 0.1389491 
+[1] 440
+  |                                                                              |==============================================================        |  88%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3521151 0.1140029 0.4682381 0.4741443 0.1276388 0.1271606 0.1710367 0.1212275 
+[1] 441
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.05335596 0.09530657 0.03645284 0.03679446 0.08342382 0.09538484 0.09512910 
+ reg.sd.bs 
+0.09880338 
+[1] 442
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+0.081938162 0.106578026 0.005298144 0.021128653 0.086839846 0.092448394 
+  prp.sd.bs   reg.sd.bs 
+0.076168972 0.101382628 
+[1] 443
+  |                                                                              |==============================================================        |  89%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1365848 0.1072613 0.1726287 0.1557708 0.1162570 0.1329436 0.1540984 0.1076619 
+[1] 444
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3293381 0.1296379 0.2227345 0.2244408 0.1382085 0.1609109 0.1631793 0.1282115 
+[1] 445
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.29094734 0.12690054 0.12523352 0.09985670 0.14295360 0.35144790 0.08255876 
+ reg.sd.bs 
+0.13015712 
+[1] 446
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2023001 0.1169276 0.4391154 0.2931745 0.1056423 0.1842751 0.6211007 0.1237295 
+[1] 447
+  |                                                                              |===============================================================       |  89%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1953494 0.1150731 0.1192914 0.1195490 0.1452230 0.1688707 0.1300962 0.1179775 
+[1] 448
+  |                                                                              |===============================================================       |  90%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1503882 0.1156823 0.4002229 0.3582739 0.2048077 0.3085151 0.4681549 0.1349918 
+[1] 449
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.27635563 0.09812029 0.24930086 0.26399878 0.10068081 0.11536606 0.12280109 
+ reg.sd.bs 
+0.10524056 
+[1] 450
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.14746060 0.10764096 0.09369248 0.06783406 0.09326136 0.13122671 0.07511043 
+ reg.sd.bs 
+0.11644146 
+[1] 451
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2566022 0.1160559 0.3033067 0.3237205 0.1463174 0.2430280 0.3603708 0.1224286 
+[1] 452
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1045314 0.1121089 0.2004520 0.1709845 0.1717568 0.2763154 0.3492311 0.1228362 
+[1] 453
+  |                                                                              |===============================================================       |  91%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2076024 0.1309278 0.1542595 0.1494092 0.1311355 0.1639715 0.1301851 0.1312722 
+[1] 454
+  |                                                                              |================================================================      |  91%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.5644051 0.1008269 0.5777508 0.5862316 0.1077148 0.1154425 0.1228818 0.1073245 
+[1] 455
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3387422 0.1163642 0.3676337 0.3775472 0.1306229 0.1601670 0.1864958 0.1205579 
+[1] 456
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.4382751 0.1288994 0.5667382 0.5065413 0.1886225 0.2793660 0.3837255 0.1331533 
+[1] 457
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.19059821 0.12905416 0.09924707 0.09798646 0.11834837 0.15957748 0.09755885 
+ reg.sd.bs 
+0.13515365 
+[1] 458
+  |                                                                              |================================================================      |  92%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.15711951 0.09029323 0.15085983 0.15870787 0.09128156 0.16371796 0.20466264 
+ reg.sd.bs 
+0.09326757 
+[1] 459
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.07599131 0.10769022 0.13179442 0.15008818 0.18168655 0.32756835 0.34638905 
+ reg.sd.bs 
+0.11748178 
+[1] 460
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.12787249 0.10658021 0.05398211 0.03796949 0.10779575 0.12983602 0.11691563 
+ reg.sd.bs 
+0.11115375 
+[1] 461
+  |                                                                              |=================================================================     |  92%        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.10552252  0.11417066  0.01036355 -0.02498448  0.12399024  0.31114031 
+  prp.sd.bs   reg.sd.bs 
+ 0.07542233  0.10947880 
+[1] 462
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1734431 0.1230046 0.3134309 0.3171089 0.1715231 0.2282606 0.2263804 0.1404966 
+[1] 463
+  |                                                                              |=================================================================     |  93%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2208653 0.1251273 0.2552779 0.2057653 0.1431376 0.2815249 0.4715388 0.1293953 
+[1] 464
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.11659117 0.10847680 0.10273793 0.09248219 0.11550508 0.15529095 0.18442885 
+ reg.sd.bs 
+0.11139432 
+[1] 465
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3415349 0.1267180 0.3024875 0.2914212 0.1873680 0.3744357 0.4033618 0.1275149 
+[1] 466
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2546771 0.1166510 0.1998844 0.1841025 0.1209339 0.1457358 0.1190085 0.1141432 
+[1] 467
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2044054 0.1244354 0.1815894 0.1628071 0.1126450 0.1535299 0.2391959 0.1255604 
+[1] 468
+  |                                                                              |==================================================================    |  94%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1838248 0.1179212 0.3728632 0.3589361 0.2530691 0.3462612 0.4363063 0.1290094 
+[1] 469
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2496056 0.1306179 0.1307589 0.1462603 0.1751126 0.2422423 0.1233553 0.1351153 
+[1] 470
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1811259 0.1081308 0.1962024 0.1884453 0.1285930 0.1527132 0.1649856 0.1098621 
+[1] 471
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3027806 0.1267410 0.2121224 0.2456606 0.1365648 0.1728398 0.1638092 0.1324422 
+[1] 472
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.01365631  0.11041149 -0.07870063 -0.05818215  0.09603720  0.11535376 
+  prp.sd.bs   reg.sd.bs 
+ 0.08926133  0.11092956 
+[1] 473
+  |                                                                              |==================================================================    |  95%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.06999247 0.10652812 0.09361183 0.08888173 0.14543629 0.17206504 0.16877879 
+ reg.sd.bs 
+0.11964903 
+[1] 474
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3629987 0.1150711 0.3190367 0.3512644 0.1157948 0.1330517 0.1366829 0.1171237 
+[1] 475
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1793913 0.1110650 0.2013496 0.1742750 0.1240335 0.1726457 0.1665140 0.1171497 
+[1] 476
+  |                                                                              |===================================================================   |  95%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3221270 0.1261153 0.3060459 0.2964831 0.1432860 0.1716475 0.2008618 0.1396529 
+[1] 477
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2138023 0.1091188 0.3066063 0.2735644 0.1548706 0.2214869 0.2813532 0.1158130 
+[1] 478
+  |                                                                              |===================================================================   |  96%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.3788024 0.1061499 0.5173626 0.4529090 0.1588290 0.2612076 0.4185959 0.1143172 
+[1] 479
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.23102178 0.11298771 0.07434260 0.02503248 0.17130608 0.37040609 0.09774750 
+ reg.sd.bs 
+0.11567030 
+[1] 480
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.10403146 0.09331504 0.10435823 0.10978054 0.11596185 0.12561085 0.13042150 
+ reg.sd.bs 
+0.09705389 
+[1] 481
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.17479045 0.11333089 0.09657649 0.14854685 0.07835563 0.12565839 0.08202391 
+ reg.sd.bs 
+0.11461469 
+[1] 482
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2961330 0.1141918 0.2756371 0.2607677 0.1354934 0.1825266 0.1945969 0.1114866 
+[1] 483
+  |                                                                              |====================================================================  |  97%         reg       sd.reg          prp           dr    sd.dr.asp     sd.dr.bs 
+-0.006505369  0.089999856  0.054119313  0.058036041  0.138152488  0.219655586 
+   prp.sd.bs    reg.sd.bs 
+ 0.226455157  0.102790401 
+[1] 484
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2402997 0.1142150 0.2886882 0.2891366 0.1395407 0.3617809 0.1790173 0.1216131 
+[1] 485
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2782993 0.1249441 0.2735624 0.2660804 0.1471189 0.2002387 0.2425322 0.1302455 
+[1] 486
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.23191494 0.10557016 0.09645920 0.08928815 0.11808862 0.17626548 0.07997329 
+ reg.sd.bs 
+0.09962335 
+[1] 487
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1571578 0.1040005 0.1696503 0.1638866 0.1076943 0.1587379 0.2120152 0.1039765 
+[1] 488
+  |                                                                              |====================================================================  |  98%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2484516 0.1072643 0.2539634 0.2606023 0.1105611 0.1217060 0.1212184 0.1121128 
+[1] 489
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.08512428  0.12099269 -0.03471398 -0.05087146  0.12233717  0.16535059 
+  prp.sd.bs   reg.sd.bs 
+ 0.08036027  0.12176531 
+[1] 490
+  |                                                                              |===================================================================== |  98%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.1874947 0.1149505 0.2019157 0.1956584 0.1362050 0.1932865 0.2692713 0.1178919 
+[1] 491
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.12711531  0.14549397 -0.02193991 -0.04918431  0.15649412  0.17437498 
+  prp.sd.bs   reg.sd.bs 
+ 0.08308728  0.14543384 
+[1] 492
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.25264660 0.12362561 0.35626610 0.22383590 0.09603093 0.12680128 0.39135867 
+ reg.sd.bs 
+0.11575295 
+[1] 493
+  |                                                                              |===================================================================== |  99%      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2701489 0.1257812 0.2211422 0.2117620 0.1332984 0.1649164 0.1690086 0.1249978 
+[1] 494
+       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.27471864 0.09993277 0.27923859 0.27447178 0.10934344 0.12725032 0.12971098 
+ reg.sd.bs 
+0.11129154 
+[1] 495
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2835160 0.1380268 0.1807554 0.2053323 0.1589291 0.2890907 0.3833555 0.1502473 
+[1] 496
+        reg      sd.reg         prp          dr   sd.dr.asp    sd.dr.bs 
+ 0.05344907  0.11188912 -0.04911085 -0.05690006  0.09863487  0.11813032 
+  prp.sd.bs   reg.sd.bs 
+ 0.07681836  0.11064406 
+[1] 497
+  |                                                                              |======================================================================|  99%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.17249387 0.10225249 0.11693699 0.12439434 0.08662363 0.08741945 0.08892271 
+ reg.sd.bs 
+0.09669055 
+[1] 498
+  |                                                                              |======================================================================| 100%       reg     sd.reg        prp         dr  sd.dr.asp   sd.dr.bs  prp.sd.bs 
+0.19017298 0.11141866 0.04002802 0.08775358 0.10414787 0.15995395 0.07901953 
+ reg.sd.bs 
+0.11136628 
+[1] 499
+      reg    sd.reg       prp        dr sd.dr.asp  sd.dr.bs prp.sd.bs reg.sd.bs 
+0.2185621 0.1202395 0.2960769 0.3037159 0.1607663 0.1929564 0.2299833 0.1286786 
+[1] 500
+
+There were 50 or more warnings (use warnings() to see the first 50)
+> save(cov.rate,res,mse, file=paste0("prpW",n,"_",N,".Rdata"))
+> 
+> #rm(list=ls())
+> 
+> proc.time()
+     user    system   elapsed 
+23557.229     1.214 29191.451 

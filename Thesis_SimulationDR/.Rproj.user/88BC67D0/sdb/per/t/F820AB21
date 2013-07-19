@@ -1,0 +1,15 @@
+{
+    "contents" : "\nn=500\nsource(\"Simulation2/DatGeneration2.R\")\nsource(\"Simulation2/TrueEst.R\")\nsource(\"estimator.R\")\nrequire(boot)\n#ls()\nN = 500\nr=4;pho=0.7;\nalpha2 = 2;alpha1=0;alpha3=2 \ngamma0 = -1.386294; gamma1 = 1; gamma2 = 1; lambda1 = 0;lambda2=0\n\nsource(\"MainPartprp.R\")\nsave(cov.rate,res,mse, file=paste0(\"prpW\",n,\"_\",N,\".Rdata\"))\n\n#rm(list=ls())\n",
+    "created" : 1371626225625.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3298435331",
+    "id" : "F820AB21",
+    "lastKnownWriteTime" : 1371625821,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/Thesis_SimulationDR/Simulation2/prpwrong.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

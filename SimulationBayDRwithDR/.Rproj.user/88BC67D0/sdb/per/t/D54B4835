@@ -1,0 +1,16 @@
+{
+    "contents" : "est.dr = function(dat)\n{\n  glm.fit = glm(Y~.,data=dat, family=\"binomial\")\n  new.data=cbind(X=1,dat[,-c(1:2)])\n  pr1 = predict(glm.fit,newdata=new.data)\n  pr1 = exp(pr1)/(1+exp(pr1))\n  new.data=cbind(X=0,dat[,-c(1:2)])\n  pr0 = predict(glm.fit,newdata=new.data)\n  pr0 = exp(pr0)/(1+exp(pr0))\n  glm.fit = glm(X~.,data=dat[,-1], family=\"binomial\")\n  prp = fitted(glm.fit)\n  Y = dat$Y\n  X= dat$X\n  \n  est1 = mean( (Y*X - (X-prp)*pr1)/prp )\n  est0 = mean( (Y*(1-X) + (X-prp)*pr0)/(1-prp)) \n  est.dr = est1 - est0  \n  ## sandwich se\n  sd.dr = sqrt(sum(((Y*X - (X-prp)*pr1)/prp - (Y*(1-X) + (X-prp)*pr0)/(1-prp)-est.dr)^2)/nrow(dat)^2)\n  \n  list(est.dr=est.dr,sd.dr=sd.dr)\n  #c(est.dr,est1=est1,est0=est0)\n}\n\nsd.bs <- function(dat,B=1000)\n{\n  pb = txtProgressBar(min=0,max=B,style=3)\n  est.boos = do.call(rbind,lapply(1:B,function(x)\n  {\n    b.sample = sample(1:nrow(dat),size=nrow(dat),replace=TRUE)\n    dr= est.dr(dat[b.sample,])$est.dr\n    X = dat[b.sample,\"X\"]\n    Y = dat[b.sample,\"Y\"]\n    C = dat[b.sample,paste0(\"C\",1:(ncol(dat)-2))]\n    setTxtProgressBar(pb,x)\n    est = as.vector(bay.est.old(Y,X,C)$est)\n    return(c(dr,sold=est[1],P=est[2],Bold=est[3]))\n  }))\n  \n  est.sd = as.vector(apply(est.boos,2,sd))\n  list(dr.sd=est.sd[1],sold.sd=est.sd[2],P.sd=est.sd[3],Sold.sd=est.sd[4])\n}\n\nsimFun <- function(Dat)\n{\n  #source(\"Fun.R\")\n  dr = est.dr(Dat)$est.dr\n  require(BayDR)\n  bayDR.est=as.vector(bay.est.old(Y=Dat$Y,X=Dat$X,C=Dat[,3:6])$est)\n  res  = c(dr = dr,sold=bayDR.est[1],p=bayDR.est[2],bold=bayDR.est[3])\n  \n  return(res)\n}\n",
+    "created" : 1373147252454.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3330042392",
+    "id" : "D54B4835",
+    "lastKnownWriteTime" : 1373148953,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SimulationBayDRwithDR/Fun.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

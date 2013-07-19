@@ -1,0 +1,15 @@
+{
+    "contents" : "filename = paste0('EstN',N,'n',nobs)\nprint(filename)\nrequire(boot)\nsource(\"TrueEffect.R\")\nDelta=causal.est(gamma0=g0,gamma1=g1,gamma2=g2)\n\nsource(\"DatGeneration2.R\")\nsource(\"Fun.R\")\nestimates = as.data.frame(do.call(rbind,lapply(1:N,function(i) {\n  Dat=DatGen(gamma0=g0,gamma1=g1,gamma2=g2,n=nobs)\n  print(i)\n  simFun(Dat)\n})\n)\n)\n\ncolMeans((estimates-Delta)^2)\n\n#save(estimates,g0,g1,g2,Delta,file=paste0(filename,'.Rdata'))\n\n#file.copy(\"temp.R\", paste0(filename,\".txt\"))",
+    "created" : 1373147550803.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1663209193",
+    "id" : "11BA7DC8",
+    "lastKnownWriteTime" : 1373272154,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SimulationBayDRwithDR/mainpart.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

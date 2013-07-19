@@ -1,0 +1,16 @@
+{
+    "contents" : "require(ggplot2)\nggplot.temp=ggplot(data=subest) +\n  facet_wrap(n~k)+theme(legend.position = \"none\") +\n  xlab(\"\")+ylab(\"RRMSE\")\nplotsave=ggplot.temp +\n  geom_text(aes(y=value,x=variable,label=variable,\n                color=factor(variable)),alpha=1,size=3,angle=15,\n            position = position_dodge(width=0.2))\n\n#facet_wrap(n~k,scales = \"free_y\" )",
+    "created" : 1374184942758.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "792571028",
+    "id" : "67671D97",
+    "lastKnownWriteTime" : 1374187583,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/sim4/Plot.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

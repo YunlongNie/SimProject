@@ -1,0 +1,15 @@
+{
+    "contents" : "\n\nDatGen = function(n=1000, r = 4,pho=0.7,\n                  alpha0 , alpha1,\n                  gamma0 = -1.25, gamma1 = 1, \n                  gamma2)\n{ \n  if(missing(alpha0)) alpha0 = (logit(0.5) + logit(0.05))/2\n  if(missing(alpha1)) alpha1 = (logit(0.5) - logit(0.05))/4\n  if(missing(gamma2)) gamma2 = 0\n  require(LearnBayes)\n\n  Sigma <- diag(rep(1, r))\n  Sigma[Sigma == 0] <- pho\n  temp <- rmnorm(n, mean = rep(0, r), varcov = Sigma)\n  temp[temp > 0] <- 1\n  temp[temp != 1] <- 0\n  C=temp\n  \n  Z <- rnorm(10000,0,1)\n  Mean34 <- mean((1-pnorm((pho^(-1)-1)^(-0.5)*Z,0,1))^2)\n  \n  prp = apply(C, 1, function(x)\n  {\n    \n    pr = alpha0 + alpha1*(x[1]+ x[2] +x[3]-1.5)\n   \n    exp(pr)/(1+exp(pr))\n    \n  }\n  )\n  \n  X = rbinom(n,size=1,prob=prp)\n  \n  outcome.pr = sapply(1:n, function(x)\n  {\n    pr = gamma0+ gamma1*X[x]  + gamma2*X[x]*(C[x,1]*C[x,2]-Mean34) # if anything change here the TrueCausal effect should also be updated. \n #lambda2*(C[x,2]*C[x,3]*(1-C[x,4])-Mean123)\n    exp(pr)/(1+exp(pr))\n  })\n  \n  Y = rbinom(n,size=1,prob=outcome.pr)\n  dat=as.data.frame(cbind(Y,X,C))\n  names(dat) = c(\"Y\",\"X\",paste(\"C\",1:r,sep=\"\"))\n  return(dat)\n}\n\n",
+    "created" : 1373501645918.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2665387599",
+    "id" : "B24F6BCB",
+    "lastKnownWriteTime" : 1373667319,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SIm3/DatGeneration2.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

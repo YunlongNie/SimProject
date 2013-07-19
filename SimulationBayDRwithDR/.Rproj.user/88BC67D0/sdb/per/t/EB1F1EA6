@@ -1,0 +1,15 @@
+{
+    "contents" : "causal.est=function(\n                    r = 4,pho=0.7,\n                    gamma0 = -1.25, gamma1 = 1, \n                    gamma2\n                    )\n  {\nC = do.call(expand.grid, rep(list(c(0,1)),r))\ngc = rowSums(C)\nZ <- rnorm(100000, 0, 1)\n\nMean34 <- mean((1-pnorm((pho^(-1)-1)^(-0.5)*Z,0,1))^2)\npr.C= sapply(gc, function(x) {\nmean(pnorm((pho^(-1) - 1)^(-0.5) * Z, 0, 1)^(r-x)*(1-pnorm((pho^(-1) - 1)^(-0.5) * Z, 0, 1))^x)\n})\n\nmu1 = sum(sapply(1:(2^r), function(x)\n  {\n  temp=gamma0 + gamma1 + gamma2*(C[x,1]*C[x,2]-Mean34)\n  exp(temp)/(1+exp(temp))*pr.C[x]\n})) \nmu0 = sum(sapply(1:2^r, function(x)\n  {\n    temp=gamma0 \n    exp(temp)/(1+exp(temp))*pr.C[x]\n  }))\n\ncau.est= mu1 - mu0\n#return(c(cau.est,mu1,mu0))\nreturn(cau.est)\n}\n\n\n\n#gamma0+ gamma1*X[x]  + gamma3*X[x]*(C[x,1]*C[x,2]-Mean34)\n",
+    "created" : 1373269987351.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3784482493",
+    "id" : "EB1F1EA6",
+    "lastKnownWriteTime" : 1373270000,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SimulationBayDRwithDR/TrueEffect.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

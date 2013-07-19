@@ -1,0 +1,16 @@
+{
+    "contents" : "source(\"DatGeneration2.R\")\n\nnobs=100\nrequire(boot)\ng0=logit(0.2)\ng0=-1.2\ng1=0.7\ng2=3\nsource(\"TrueEffect.R\")\nDelta=causal.est(gamma0=g0,gamma1=g1,gamma2=g2)\nDelta\n\nPvalue=sapply(1:5000,function(i) \n{\nDat=DatGen(gamma0=g0,gamma1=g1,gamma2=g2,n=nobs,pho=0.3)\nglm0 = glm(Y~. + I(X*C1*C2),data=Dat,family=binomial)\nsy = summary(glm0)\nsy$coefficients[7,4]\n#glm1=glm(Y~.,data=Dat,family=binomial)\n#pchisq(glm1$dev,glm1$df.resid,lower.tail=FALSE)\n#avo=anova(glm0,glm1,test='Chisq')\n#avo[5][2,]\n}\n)\nmean(Pvalue<0.05,na.rm=TRUE)\n\npara200=data.frame(obs=200,g2=c(0.8,2.1,1.4),g1=0.7,g0=-1.2)\npara500 = data.frame(obs=500,g2=c(0.5,0.9,1.3),g1=0.7,g0=-1.2)\npara100 = data.frame(obs=100,g2=c(1.4,2.8),g1=0.7,g0=-1.2)\nParaset=rbind(para100,para200,para500)\nsave(Paraset,file=\"ParaSet.Rdata\")\n\nglm2 = glm(Y~X+I(X*C1*C2),data=Dat,family=binomial)\n\nsummary(glm2)\n\nanova(glm1,test=\"Chisq\")\n\n\nX = rbinom(n=1000,size=1,prob=0.5)\nC1 = rbinom(n=1000,size=1,prob=0.3)\nC2 = rbinom(n=1000,size=1,prob=0.2)\nC3 = rbinom(n=1000,size=1,prob=0.1)\nC4 = rbinom(n=1000,size=1,prob=0.7)\n\ngamma0=-1.2\ngamma1=0.7\ngamma2=0\nMean34=0.2\noutcome.pr = sapply(1:1000, function(x)\n{\n  pr = gamma0+ gamma1*X[x]  + gamma2*X[x]*(C1[x]*C2[x]-Mean34)\n  #lambda2*(C[x,2]*C[x,3]*(1-C[x,4])-Mean123)\n  exp(pr)/(1+exp(pr))\n})\n\nY = rbinom(n=1000,size=1,prob=outcome.pr)\nglm2=glm(Y~X+C1+C2+C3+C4,family=binomial)\nglmn = glm(Y~X+I(C1*C2),family=binomial)\npchisq(glm2$dev,glm2$df.resid,lower.tail=FALSE)\n",
+    "created" : 1373179842574.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1961470687",
+    "id" : "4563C769",
+    "lastKnownWriteTime" : 1373316536,
+    "path" : "~/Dropbox/UBC/Thesis/Simulation_Thesis/SimulationBayDRwithDR/Paraset.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
